@@ -9,9 +9,19 @@
 🔧 Option 1: Reflect, Refactor, and Rebuild
 
 ## 🧪 Option 2: Build a B-Tree from Scratch in Java
+
 - Implement a 2-3-4 node structure with dynamic node splitting: Each node support up to 3 keys and have between 2 and 4 children
 - Create a simplified 2-3-4 Tree class with core functionalities and balancing logic
-
+- 
+🧾 Grading Rubric – Option 2
+```
+Category	Points
+Core Tree Methods Functionality	10 pts
+Balancing Logic & Node Splits	10 pts
+Code Quality & Comments	5 pts
+Output Demonstration & README	5 pts
+Total	30 pts
+```
 ### 🧠 Design & Structure
 ```
 Lab15 2-3-4 Tree
@@ -103,7 +113,4 @@ In-Order Traversal:
 
 📤🧾✅✅✅Submission Requirements
 
-🧾 Grading Rubric – Option 2
-```
 
-```
