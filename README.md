@@ -99,6 +99,13 @@ In-Order Traversal:
 ```
 ![Sample Output](sample_output.png)
 
+### 📊 Test
+To run the unit tests for the repository, run the commands below
+```
+python -m pip install pytest
+python -m pytest
+```
+
 💡 Implementation Tips
 Start with a Node class to hold keys and children
 
