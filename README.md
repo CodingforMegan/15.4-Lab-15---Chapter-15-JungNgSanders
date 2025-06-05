@@ -14,7 +14,7 @@
 
 ### 🧠 Design & Structure
 ```
-project_3/
+Lab15 2-3-4 Tree
 ├── main.py:
 ├           visualize_tree()
 ├           ??
@@ -42,13 +42,13 @@ project_3/
 - inOrderTraversal()
      Store and Print all keys in sorted order
 
-- remove(int key) (Bonus)
+- ⭐ remove(int key) (Bonus)
      Delete a key and rebalance if necessary
 
-- visualize_tree() (Bonus)
+- ⭐ visualize_tree() (Bonus)
      Visualize BTree structure graphically
 ```
-✅ Input
+### ✅ Input
 
 Implement a 2-3-4 node structure with dynamic node splitting
 
@@ -61,7 +61,7 @@ Use a test driver to insert 15–20 random integers
 
 Print in-order results to validate the structure
 
-⭐ Extra Credit
+ Extra Credit
 Add a visual print method that shows the tree level by level
 
 📤 Submission Requirements
@@ -102,12 +102,8 @@ In-Order Traversal:
 ![Sample Output](sample_output.png)
 
 📤🧾✅✅✅Submission Requirements
+
 🧾 Grading Rubric – Option 2
 ```
-Category	Points
-Core Tree Methods Functionality	10 pts
-Balancing Logic & Node Splits	10 pts
-Code Quality & Comments	5 pts
-Output Demonstration & README	5 pts
-Total	30 pts
+
 ```
