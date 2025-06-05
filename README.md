@@ -1,55 +1,58 @@
-#Group Members: Michael Jung (ID:10680322), Timothy Sanders (ID: 01002147), Megan Ng (ID: 00756276)
+💬 Collaboration Group Members: Michael Jung (ID:10680322), Timothy Sanders (ID: 01002147), Megan Ng (ID: 00756276)
 
-#Date: 6/02/25
+🗓 Date: 6/03/25
 
-#Course: Spr25_CS_034 CRN 39575
+📌 Course: Spr25_CS_034 CRN 39575
 
-🌳 Lab 15 – Balanced Trees in Action: Two-Track Options
-📌 Join LAB15 Group – Required for All
-Even if you plan to work individually, you must join the LAB 15 group before you start.
-
-🗓 Due Date: Sunday, June 8
-This week, you’ll choose one of two lab tracks designed to deepen your understanding of B-Trees and 2-3-4 Trees through hands-on Java development and structured problem-solving.
+# 🌳 Lab 15 – Balanced Trees in Action: Two-Track Options
 
 🔧 Option 1: Reflect, Refactor, and Rebuild
-Revisit a previous lab or Java project and take it to the next level. Select one that you can:
 
-✅ Improve using balanced tree logic
+## 🧪 Option 2: Build a B-Tree from Scratch in Java
+- Implement a 2-3-4 node structure with dynamic node splitting: Each node support up to 3 keys and have between 2 and 4 children
+- Create a simplified 2-3-4 Tree class with core functionalities and balancing logic
 
-✅ Extend with features inspired by B-Trees or 2-3-4 Trees
+### 🧠 Design & Structure
+```
+project_3/
+├── main.py:
+├           visualize_tree()
+├           ??
+├           ??
+├           ??
+├           ??
+├           ??
+├── BTree.py: 
+├           Node234 class, Tree234 class
+├── tests/
+├           test_BTree.py
+├           test_main.py
+├           __init__.py  
+├── sample_output.png
+└── README.md
+```
+🔨Implemented Methods
+```
+- insert(int key)
+     Add a new key to the tree
 
-✅ Refactor for better readability, scalability, or design clarity
+- contains(int key)
+     Check whether a key exists
 
-This is your chance to demonstrate your growth as a developer by refining your earlier work using new techniques.
+- inOrderTraversal()
+     Store and Print all keys in sorted order
 
-📤 Submission Requirements
+- remove(int key) (Bonus)
+     Delete a key and rebalance if necessary
 
+- visualize_tree() (Bonus)
+     Visualize BTree structure graphically
+```
+✅ Input
 
-🧾 Grading Rubric – Option 1
-Category	Points
-Refactoring Quality	10 pts
-Balanced Tree Enhancements	10 pts
-Code Clarity & Documentation	5 pts
-README Explanation	5 pts
-Total	30 pts
-🧪 Option 2: Build a B-Tree from Scratch in Java
-Create a simplified B-Tree or 2-3-4 Tree class with core functionalities and balancing logic.
-
-🔨 Required Methods
-insert(int key) – Add a new key to the tree
-
-contains(int key) – Check whether a key exists
-
-inOrderTraversal() – Print all keys in sorted order
-
-remove(int key) – (Bonus) Delete a key and rebalance if necessary
-
-📋 Technical Requirements
 Implement a 2-3-4 node structure with dynamic node splitting
 
-Each node should support up to 3 keys
 
-Nodes can have between 2 and 4 children
 
 💡 Implementation Tips
 Start with a Node class to hold keys and children
@@ -98,16 +101,13 @@ In-Order Traversal:
 ```
 ![Sample Output](sample_output.png)
 
+📤🧾✅✅✅Submission Requirements
 🧾 Grading Rubric – Option 2
+```
 Category	Points
 Core Tree Methods Functionality	10 pts
 Balancing Logic & Node Splits	10 pts
 Code Quality & Comments	5 pts
 Output Demonstration & README	5 pts
 Total	30 pts
-💬 Support & Collaboration
-You may work independently or with one partner (submit individually)
-
-Visit Zoom office hours or post in the DQ: Questions thread if you need help
-
-Let us know which track you choose—and give it your best effort. You’ve got this!
+```
