@@ -23,10 +23,7 @@ Revisit a previous lab or Java project and take it to the next level. Select one
 This is your chance to demonstrate your growth as a developer by refining your earlier work using new techniques.
 
 📤 Submission Requirements
-You may work with a partner.
 
-Include a README that summarizes your changes and refactoring strategies.
-Submit: .java Source files, a compiled output (or screenshot), and the updated README.
 
 🧾 Grading Rubric – Option 1
 Category	Points
@@ -68,6 +65,37 @@ Add a visual print method that shows the tree level by level
 Submit your code files, output screenshots, and a short README through zyBooks
 
 Ensure your code is commented, especially around node splitting logic
+
+### Sample Output
+```
+Inserted 10
+     [10]
+
+Inserted 20
+   [10, 20]
+
+Inserted 5
+  [5, 10, 20]
+
+Inserted 6
+              [10]
+          [5, 6]  [20]
+
+Inserted 12
+              [10]
+        [5, 6]  [12, 20]
+
+Inserted 30
+              [10]
+      [5, 6]  [12, 20, 30]
+
+Inserted 25
+                             [10, 20]
+               [5, 6]  [12]  [25, 30]  [12, 20, 30]
+
+In-Order Traversal:
+[5, 6, 10, 12, 20, 25, 30]
+```
 
 🧾 Grading Rubric – Option 2
 Category	Points
