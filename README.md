@@ -16,7 +16,7 @@
 🧾 Grading Rubric – Option 2
 ```
 Category	                               Points
-Core Tree Methods Functionality	          10 pts
+Core Tree Methods Functionality	           10 pts
 Balancing Logic & Node Splits	           10 pts
 Code Quality & Comments	                   5 pts
 Output Demonstration & README	           5 pts
