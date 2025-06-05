@@ -96,6 +96,7 @@ Inserted 25
 In-Order Traversal:
 [5, 6, 10, 12, 20, 25, 30]
 ```
+![Sample_Output](sampel_output.png)
 
 🧾 Grading Rubric – Option 2
 Category	Points
