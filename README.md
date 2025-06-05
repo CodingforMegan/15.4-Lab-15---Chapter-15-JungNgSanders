@@ -10,9 +10,15 @@
 
 ## 🧪 Option 2: Build a B-Tree from Scratch in Java
 
-- Implement a 2-3-4 node structure with dynamic node splitting: Each node support up to 3 keys and have between 2 and 4 children
-- Create a simplified 2-3-4 Tree class with core functionalities and balancing logic
-- 
+- Create a 2-3-4 Tree node structure
+       - Each node support up to 3 keys
+       - Each node has 1, 2 or 3 children
+- Implement a 2-3-4 Tree structure with dynamic node splitting and merging
+       - Dynamic node splitting
+       - Merging & Rotation to maintain balance
+       - In Order Traversal logic
+
+
 🧾 Grading Rubric – Option 2
 ```
 Category	                               Points
