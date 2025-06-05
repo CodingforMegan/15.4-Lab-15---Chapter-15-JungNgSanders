@@ -41,7 +41,7 @@ Lab15 2-3-4 Tree
 ├── sample_output.png
 └── README.md
 ```
-🔨Implemented Methods
+### 🔨Implemented Methods
 ```
 - insert(int key)
      Add a new key to the tree
@@ -59,27 +59,15 @@ Lab15 2-3-4 Tree
      Visualize BTree structure graphically
 ```
 ### ✅ Input
-
-Implement a 2-3-4 node structure with dynamic node splitting
-
-
-
-💡 Implementation Tips
-Start with a Node class to hold keys and children
-
+```
+Input for Regular Demo:
+keys = [10, 20, 5, 6, 12, 30, 25]
+```
+```
 Use a test driver to insert 15–20 random integers
+```
 
-Print in-order results to validate the structure
-
- Extra Credit
-Add a visual print method that shows the tree level by level
-
-📤 Submission Requirements
-Submit your code files, output screenshots, and a short README through zyBooks
-
-Ensure your code is commented, especially around node splitting logic
-
-### Sample Output
+### 📤 Sample Output
 ```
 Inserted 10
      [10]
@@ -110,6 +98,21 @@ In-Order Traversal:
 [5, 6, 10, 12, 20, 25, 30]
 ```
 ![Sample Output](sample_output.png)
+
+💡 Implementation Tips
+Start with a Node class to hold keys and children
+
+Use a test driver to insert 15–20 random integers
+
+Print in-order results to validate the structure
+
+ Extra Credit
+Add a visual print method that shows the tree level by level
+
+📤 Submission Requirements
+Submit your code files, output screenshots, and a short README through zyBooks
+
+Ensure your code is commented, especially around node splitting logic
 
 📤🧾✅✅✅Submission Requirements
 
