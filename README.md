@@ -77,54 +77,115 @@ Random_value =
 Use a test driver to insert 15–20 random integers
 ```
 
-### 📤 Insertion Sample Output
+### 📤 Insertion, Search & Deletion Sample Output
 ```
-Inserted 62
-     [62]
+Inserted 78
+     [78]
 
-Inserted 84
-   [62, 84]
+Inserted 21
+   [21, 78]
 
-Inserted 90
- [62, 84, 90]
+Inserted 8
+  [8, 21, 78]
 
-Inserted 43
-              [84]
-         [43, 62]  [90]
+Inserted 72
+              [21]
+         [8]  [72, 78]
 
-Inserted 94
-              [84]
-       [43, 62]  [90, 94]
+Inserted 57
+              [21]
+       [8]  [57, 72, 78]
 
-Inserted 11
-              [84]
-     [11, 43, 62]  [90, 94]
-
-Inserted 7
-                    [43, 84]
-             [7, 11]  [62]  [90, 94]
+Inserted 80
+                    [21, 72]
+               [8]  [57]  [78, 80]
 
 Inserted 68
-                    [43, 84]
-           [7, 11]  [62, 68]  [90, 94]
+                    [21, 72]
+             [8]  [57, 68]  [78, 80]
 
-Inserted 81
-                    [43, 84]
-         [7, 11]  [62, 68, 81]  [90, 94]
+Inserted 59
+                    [21, 72]
+           [8]  [57, 59, 68]  [78, 80]
 
-Inserted 91
-                    [43, 84]
-       [7, 11]  [62, 68, 81]  [90, 91, 94]
+Inserted 93
+                    [21, 72]
+         [8]  [57, 59, 68]  [78, 80, 93]
+
+Inserted 75
+                           [21, 72, 80]
+                [8]  [57, 59, 68]  [75, 78]  [93]
 
 In-Order Traversal:
-[7, 11, 43, 62, 68, 81, 84, 90, 91, 94]
+[8, 21, 57, 59, 68, 72, 75, 78, 80, 93]
+
+Searching for 78: Found
+
+Searching for 21: Found
+
+Searching for 8: Found
+
+Searching for 72: Found
+
+Searching for 57: Found
+
+Searching for 80: Found
+
+Searching for 68: Found
+
+Searching for 59: Found
+
+Searching for 93: Found
+
+Searching for 75: Found
+
+Searching for a random value 88: Not Found
+
+Removed 78
+                           [21, 72, 80]
+                  [8]  [57, 59, 68]  [75]  [93]
+
+Removed 21
+                           [57, 72, 80]
+                    [8]  [59, 68]  [75]  [93]
+
+Removed 8
+                           [59, 72, 80]
+                    [8, 57]  [68]  [75]  [93]
+
+Removed 72
+                    [59, 80]
+             [8, 57]  [68, 75]  [93]
+
+Removed 57
+                    [59, 80]
+               [8]  [68, 75]  [93]
+
+Removed 80
+                    [59, 75]
+               [8]  [68]  [93, 93]
+
+Removed 68
+                    [59, 93]
+               [8]  [68, 75]  [93]
+
+Removed 59
+                    [68, 93]
+                 [8]  [75]  [93]
+
+Removed 93
+              [68]
+         [8]  [75, 93]
+
+Removed 75
+              [68]
+           [8]  [93]
+
+In-Order Traversal:
+[8, 68, 93]
 ```
 ![Sample Output](sample_output_01.png)
 
-### 📤 Search & Deletion Sample Output
-```
-will update after fixing bugs
-```
 ![Sample Output](sample_output_02.png)
 
 ### 📊 Test
