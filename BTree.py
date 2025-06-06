@@ -319,8 +319,10 @@ class Tree234:
         if right_sibling.children:
             node.children.append(right_sibling.children.pop(0))
 
+    
     def _merge_with_siblings(self, parent, idx):
         node = parent.children[idx]
+
         if idx > 0:
             # Merge with left sibling
             left_sibling = parent.children[idx - 1]
@@ -328,9 +330,12 @@ class Tree234:
             parent.children.pop(idx)
 
             # Prevent duplicate keys
-            if merge_key not in left_sibling.keys:
-                left_sibling.keys.append(merge_key)
+            if merge_key in node.keys:
+                node.keys.remove(merge_key)
+            if merge_key in left_sibling.keys:
+                left_sibling.keys.remove(merge_key)
 
+            left_sibling.keys.extend(node.keys)
             left_sibling.keys.extend(node.keys)
             left_sibling.children.extend(node.children)
 
@@ -346,9 +351,12 @@ class Tree234:
             parent.children.pop(idx + 1)
 
             # Prevent duplicate keys
-            if merge_key not in node.keys:
-                node.keys.append(merge_key)
+            if merge_key in node.keys:
+                node.keys.remove(merge_key)
+            if merge_key in right_sibling.keys:
+                right_sibling.keys.remove(merge_key)
 
+            node.keys.append(merge_key)
             node.keys.extend(right_sibling.keys)
             node.children.extend(right_sibling.children)
 
@@ -357,13 +365,6 @@ class Tree234:
             if parent == self.root and not parent.keys:
                 self.root = node
                 return
-
-        # If parent becomes empty and is not the root, recurse upward to handle underflow
-        if not parent.keys and parent != self.root:
-            grandparent, parent_idx = self._find_parent(self.root, parent)
-            if grandparent:
-                self._handle_underflow(parent, None)
-    
 
 
     def visualize(self):
