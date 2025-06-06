@@ -1,1 +1,3 @@
-#unit test for main.py
+"""
+Unit tests for the main.py module.
+"""
