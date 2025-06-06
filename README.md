@@ -69,7 +69,9 @@ Lab15 2-3-4 Tree
 ### ✅ Input
 ```
 Random generated values list
-keys = [12, 22, 32, 54, 59, 72, 74, 76, 90, 98]
+keys = [7, 11, 43, 62, 68, 81, 84, 90, 91, 94]
+Random value to test contains() for non-existent key:
+Random_value = 
 ```
 ```
 Use a test driver to insert 15–20 random integers
@@ -77,46 +79,45 @@ Use a test driver to insert 15–20 random integers
 
 ### 📤 Insertion Sample Output
 ```
-Inserted 11
-     [11]
+Inserted 62
+     [62]
 
-Inserted 17
-   [11, 17]
+Inserted 84
+   [62, 84]
 
-Inserted 21
- [11, 17, 21]
+Inserted 90
+ [62, 84, 90]
 
-Inserted 13
-              [17]
-         [11, 13]  [21]
-
-Inserted 30
-              [17]
-       [11, 13]  [21, 30]
-
-Inserted 47
-              [17]
-     [11, 13]  [21, 30, 47]
-
-Inserted 83
-                    [17, 30]
-            [11, 13]  [21]  [47, 83]
-
-Inserted 56
-                    [17, 30]
-          [11, 13]  [21]  [47, 56, 83]
-
-Inserted 35
-                           [17, 30, 56]
-                  [11, 13]  [21]  [35, 47]  [83]
+Inserted 43
+              [84]
+         [43, 62]  [90]
 
 Inserted 94
-                               [30]
-                            [17]  [56]
-                [11, 13]  [21]  [35, 47]  [83, 94]
+              [84]
+       [43, 62]  [90, 94]
+
+Inserted 11
+              [84]
+     [11, 43, 62]  [90, 94]
+
+Inserted 7
+                    [43, 84]
+             [7, 11]  [62]  [90, 94]
+
+Inserted 68
+                    [43, 84]
+           [7, 11]  [62, 68]  [90, 94]
+
+Inserted 81
+                    [43, 84]
+         [7, 11]  [62, 68, 81]  [90, 94]
+
+Inserted 91
+                    [43, 84]
+       [7, 11]  [62, 68, 81]  [90, 91, 94]
 
 In-Order Traversal:
-[11, 13, 17, 21, 30, 35, 47, 56, 83, 94]
+[7, 11, 43, 62, 68, 81, 84, 90, 91, 94]
 ```
 ![Sample Output](sample_output_01.png)
 
