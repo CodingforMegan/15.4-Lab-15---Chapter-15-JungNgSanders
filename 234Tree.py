@@ -137,70 +137,6 @@ class Tree234:
 
     def __init__(self):
         self.root = None
-'''
-    def inOrderTraversal(self):
-        result = []
-        def _inOrderTraversal(node):
-            if node:
-                for i, key in enumerate(node.keys):
-                    if i < len(node.children):
-                        _inOrderTraversal(node.children[i])
-                    result.append(key)
-                if len(node.children) > len(node.keys):
-                    _inOrderTraversal(node.children[-1])
-        _inOrderTraversal(self.root)
-        return result
-
-    def contains(self, key):
-        def _search(node, key):
-            if not node:
-                return False
-            for i, k in enumerate(node.keys):
-                if key == k:
-                    return True
-                if key < k:
-                    return _search(node.children[i], key) if not node.is_leaf() else False
-            return _search(node.children[-1], key) if not node.is_leaf() else False
-        return _search(self.root, key)
-
-    def insert(self, key):
-        if not self.root:
-            self.root = Node234([key])
-            return
-
-        if self.root.is_full():
-            self.root = self.split_node(self.root, None)
-
-        node = self.root
-        while not node.is_leaf():
-            idx = self._find_index(node.keys, key)
-            child = node.children[idx]
-            if child.is_full():
-                self.split_node(child, node, idx)
-                if key > node.keys[idx]:
-                    idx += 1
-                child = node.children[idx]
-            node = child
-        node.insert(key)
-
-    def _find_index(self, keys, key):
-        for i, k in enumerate(keys):
-            if key < k:
-                return i
-        return len(keys)
-
-    def split_node(self, node, parent=None, index=None):
-        left = Node234(node.keys[:1], node.children[:2])
-        right = Node234(node.keys[2:], node.children[2:])
-        mid_key = node.keys[1]
-
-        if parent is None:
-            return Node234([mid_key], [left, right])
-        else:
-            parent.children.pop(index)
-            parent.insert(mid_key, left, right)
-
-'''
     
     def inOrderTraversal(self):
         """
@@ -245,9 +181,8 @@ class Tree234:
                 if key < k:
                     return _search(node.children[i], key) if not node.is_leaf() else False
             return _search(node.children[-1], key) if not node.is_leaf() else False
-
         return _search(self.root, key)
-
+    
     def insert(self, key):
         """
         Inserts a key in a 2-3-4 Tree based on the rules for a 2-3-4 Tree using node splitting   
@@ -265,7 +200,6 @@ class Tree234:
         # Case 2: Full root
         if self.root.is_full():
             self.root = self.split_node(self.root, None)
-
      
         # Top-Down Traverse the tree to find the insertion point
         # Along the way, dynamically split full nodes encountered
@@ -293,6 +227,7 @@ class Tree234:
         # Insert the key into the leaf node
         node.insert(key)
 
+    
     def _find_index(self, keys, key):
         """
         Searches for the index of where the key should be inserted into among sorted keys
@@ -338,6 +273,7 @@ class Tree234:
             # Replace the old child node with new left and right in parent's children list
             parent.children.pop(index)
             parent.insert(mid_key, left, right)
+
 
 
     def remove(self, key):
