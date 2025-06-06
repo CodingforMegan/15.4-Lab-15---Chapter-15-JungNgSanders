@@ -68,42 +68,91 @@ Lab15 2-3-4 Tree
 ```
 ### ✅ Input
 ```
-Input for Regular Demo:
-keys = [10, 20, 5, 6, 12, 30, 25]
+Random generated values list
+keys = [10, 12, 17, 29, 85, 86, 91]
 ```
 ```
 Use a test driver to insert 15–20 random integers
 ```
 
-### 📤 Sample Output
+### 📤 Insertion Sample Output
 ```
-Inserted 10
-     [10]
-
-Inserted 20
-   [10, 20]
-
-Inserted 5
-  [5, 10, 20]
-
-Inserted 6
-              [10]
-          [5, 6]  [20]
-
 Inserted 12
-              [10]
-        [5, 6]  [12, 20]
+     [12]
 
-Inserted 30
-              [10]
-      [5, 6]  [12, 20, 30]
+Inserted 29
+   [12, 29]
 
-Inserted 25
-                             [10, 20]
-               [5, 6]  [12]  [25, 30]  [12, 20, 30]
+Inserted 86
+ [12, 29, 86]
+
+Inserted 91
+              [29]
+         [12]  [86, 91]
+
+Inserted 10
+              [29]
+       [10, 12]  [86, 91]
+
+Inserted 85
+              [29]
+     [10, 12]  [85, 86, 91]
+
+Inserted 17
+              [29]
+   [10, 12, 17]  [85, 86, 91]
 
 In-Order Traversal:
-[5, 6, 10, 12, 20, 25, 30]
+[10, 12, 17, 29, 85, 86, 91]
+```
+![Sample Output](sample_output.png)
+
+### 📤 Search & Deletion Sample Output
+```
+Searching for 12: Found
+
+Searching for 29: Found
+
+Searching for 86: Found
+
+Searching for 91: Found
+
+Searching for 10: Found
+
+Searching for 85: Found
+
+Searching for 17: Found
+
+Removed 12
+              [29]
+     [10, 17]  [85, 86, 91]
+
+Removed 29
+              [85]
+       [10, 17]  [86, 91]
+
+Removed 86
+              [85]
+         [10, 17]  [91]
+
+Removed 91
+              [17]
+         [10]  [85, 91]
+
+Removed 10
+              [85]
+         [10, 17]  [91]
+
+Removed 85
+              [17]
+         [10]  [91, 91]
+
+Removed 17
+              [91]
+           [10]  [91]
+
+In-Order Traversal:
+[10, 91, 91]
 ```
 ![Sample Output](sample_output.png)
 
