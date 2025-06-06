@@ -117,6 +117,7 @@ Inserted 90
 In-Order Traversal:
 [12, 22, 32, 54, 59, 72, 74, 76, 90, 98]
 ```
+![Sample Output](sample_output_01.png)
 
 ### 📤 Search & Deletion Sample Output
 ```
@@ -183,7 +184,7 @@ Removed 90
 In-Order Traversal:
 [12, 72, 98, 98]
 ```
-
+![Sample Output](sample_output_02.png)
 
 ### 📊 Test
 To run the unit tests for the repository, run the commands below
