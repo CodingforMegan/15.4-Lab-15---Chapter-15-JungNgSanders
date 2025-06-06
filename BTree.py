@@ -5,13 +5,11 @@
 # Course: Spr25_CS_034 CRN 39575
 
 #--------------------------------------------------------------------------------------------
-
-
 from typing import Optional, List
 from collections import deque
-import random
-import matplotlib.pyplot as plt
-import networkx as nx
+#import random
+#import matplotlib.pyplot as plt
+#import networkx as nx
 
 def visualize_tree(root):
     G = nx.DiGraph()
@@ -367,7 +365,6 @@ if __name__ == "__main__":
         print(tree.visualize())
         print()
 
-    visualize_tree(tree.root)
 
     print("In-Order Traversal:")
     print(tree.inOrderTraversal())
@@ -383,7 +380,6 @@ if __name__ == "__main__":
         print(tree.visualize())
         print()
 
-    visualize_tree(tree.root)
 
     print("In-Order Traversal:")
     print(tree.inOrderTraversal())
