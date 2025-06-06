@@ -17,8 +17,8 @@ class Node234:
 
     Attributes
     ----------
-    keys : Any
-    children : Any
+    keys : List of ints
+    children : List of Node234 instances that contain up to 4 keys
 
     Methods
     -------
@@ -59,7 +59,8 @@ class Node234:
 
     def insert(self, key, leftChild=None, rightChild=None):
         """
-        Inserts a node in a 2-3-4 Tree based on the rules for a 2-3-4 Tree in sorted order.
+        Inserts a node in a 2-3-4 Tree based on the rules for a 2-3-4 Tree in sorted order. Inserts pointers to child nodes 
+        if it is split.
         
         Parameters
         ----------
@@ -92,23 +93,24 @@ class Tree234:
 
     Attributes
     ----------
-    root : Any
+    root : Node234 instance
     
     Methods
     -------
     inOrderTraversal()
         Recursively traverses the 2-3-4 Tree in-order.
     contain(key)
-        Returns a bool checking if a key is contained in the 2-3-4 Tree.
+        Returns a bool checking if a key is contained in the 2-3-4 Tree
     insert(key)
-        Inserts a key in a 2-3-4 Tree based on the rules for a 2-3-4 Tree using node splitting.      
+        Inserts a key in a 2-3-4 Tree based on the rules for a 2-3-4 Tree using node splitting   
     _find_index(keys, key)
-        Searched for the index of a key in a node
+        Searches for the index of where the key should be inserted into among sorted keys
     split_node(node, parent=None, index=None)
         Splits a node by replacing the old child node with new left and right in parent's children list. If the node is the root, the node is
         split into two nodes.
     remove(key)
-        Removes a key from the 234 Tree and uses preemptive merging to preserve the properties of the 2-3-4 Tree
+        Removes a key from the 234 Tree and uses successor replacement and preemptive merging to preserve the properties of the 2-3-4 Tree
+        if needed
     _find_successor(node)
         Finds the successor node which is used for removing an internal nodef in the remove() method
     _handle_underflow(node, key)
@@ -120,8 +122,9 @@ class Tree234:
     _borrow_from_right_sibling(parent, idx)
         Borrows a key from the right sibling to prep for a right rotation
     _merge_with_siblings(parent, idx)
-        Performs a left or right rotation based on the properties of the 2-3-4 Tree and merges.
+        Performs a left or right rotation based on the properties of the 2-3-4 Tree and merges
     visualize()
+        Produces a string visualization of the 2-3-4 Tree
     """
 
     def __init__(self):
