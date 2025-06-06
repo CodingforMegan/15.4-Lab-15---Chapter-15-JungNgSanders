@@ -11,6 +11,7 @@ from collections import deque
 #import matplotlib.pyplot as plt
 #import networkx as nx
 
+
 class Node234:
     def __init__(self, keys=None, children=None):
         self.keys = keys if keys else []
@@ -23,11 +24,10 @@ class Node234:
         return len(self.keys) == 3
 
     def insert(self, key, leftChild=None, rightChild=None):
-        # Handle Duplicate key
-        if key in self.root.keys:
+        if key in self.keys:
             print(f"Key {key} already exists. Skipping insertion.")
             return
-            
+
         if self.is_full():
             raise ValueError("Cannot insert into a full 4-node. Must split first.")
 
@@ -61,7 +61,7 @@ class Tree234:
         return result
 
 
-    def contain(self, key):
+    def contains(self, key):
 
         def _search(node, key):
             if not node:
@@ -85,7 +85,9 @@ class Tree234:
         if self.root.is_full():
             self.root = self.split_node(self.root, None)
 
-        # Traverse down the tree to find the insertion point
+     
+        # Top-Down Traverse the tree to find the insertion point
+        # Along the way, dynamically split full nodes encountered
         node = self.root
         while not node.is_leaf():
             # a. Find the correct child to descend into
@@ -125,7 +127,10 @@ class Tree234:
         if parent is None:
             return Node234([mid_key], [left, right])
         else:
+            # Replace the old child node with new left and right in parent's children list
+            parent.children.pop(index)
             parent.insert(mid_key, left, right)
+
 
     def remove(self, key):
         if not self.root:
@@ -143,9 +148,12 @@ class Tree234:
                         self._handle_underflow(node, key)
                 else: # Internal node
                     idx = node.keys.index(key)
-                    successor = self._find_successor(node.children[idx + 1])
-                    node.keys[idx] = successor
-                    _remove(node.children[idx + 1], successor)
+                    if idx + 1 < len(node.children):
+                        successor = self._find_successor(node.children[idx + 1])
+                        node.keys[idx] = successor
+                        _remove(node.children[idx + 1], successor)
+    
+
             else: # Key not in current node
                 if node.is_leaf():
                     # Key not found and it's a leaf node, so key is not in the tree
@@ -171,8 +179,9 @@ class Tree234:
 
     def _handle_underflow(self, node, key):
         if node == self.root and len(node.keys) == 0:
-            self.root = node.children[0]
+            self.root = node.children[0] if node.children else None
             return
+
 
         parent, idx = self._find_parent(self.root, node)
 
@@ -244,10 +253,13 @@ class Tree234:
             node.children.extend(right_sibling.children)
             parent.children.pop(idx + 1)
 
-        if not parent.keys and parent == self.root:
-            # If parent is root and becomes empty, the fused node becomes the new root
-            self.root = left_sibling if idx > 0 else node
-        # Note: If the parent is not root and becomes empty, _handle_underflow will be called recursively on the parent in the next step of _remove.
+        if not parent.keys:
+            if parent == self.root:
+                # If parent is root and becomes empty, the fused node becomes the new root
+                self.root = left_sibling if idx > 0 else node
+                # Note: If the parent is not root and becomes empty, _handle_underflow will be called recursively on the parent in the next step of _remove.
+            else:
+                self._handle_underflow(parent, None)
 
 
     #def print_tree(self):
@@ -346,15 +358,21 @@ if __name__ == "__main__":
         print(tree.visualize())
         print()
 
-    visualize_tree(tree.root)
 
     print("In-Order Traversal:")
     print(tree.inOrderTraversal())
 
+    visualize_tree(tree.root)
+
     for v in values:
-        print(f"Searching for {v}: {'Found' if tree.contain(v) else 'Not Found'}")
+        print(f"Searching for {v}: {'Found' if tree.contains(v) else 'Not Found'}")
         print()
 
+    random_key = random.sample(range(1, 101), 1)
+
+    for v in random_key:
+        print(f"Searching for a random value {v}: {'Found' if tree.contains(v) else 'Not Found'}")
+        print()
 
     for v in values:
         tree.remove(v)
@@ -362,7 +380,9 @@ if __name__ == "__main__":
         print(tree.visualize())
         print()
 
-    visualize_tree(tree.root)
 
     print("In-Order Traversal:")
     print(tree.inOrderTraversal())
+
+    visualize_tree(tree.root)
+
