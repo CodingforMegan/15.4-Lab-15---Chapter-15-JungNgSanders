@@ -48,10 +48,11 @@ def main():
         print(tree.visualize())
         print()
 
-    visualize_tree(tree.root)
 
     print("In-Order Traversal:")
     print(tree.inOrderTraversal())
+    
+    visualize_tree(tree.root)
 
     for v in values:
         print(f"Searching for {v}: {'Found' if tree.contain(v) else 'Not Found'}")
@@ -64,10 +65,11 @@ def main():
         print(tree.visualize())
         print()
 
-    visualize_tree(tree.root)
 
     print("In-Order Traversal:")
     print(tree.inOrderTraversal())
+
+    visualize_tree(tree.root)
 
 if __name__ == "__main__":
     main()
