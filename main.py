@@ -68,10 +68,6 @@ def main():
     """
     Builds an instance of a 2-3-4 Tree starting from the root node, inserts random integers that are multiples of 7 from 1 to 100, 
     visualizes the tree, and traverses the Tree in order. Performs a test on the contain() and remove() methods from the Tree234 class.
-
-    Parameters
-    ----------
-    None
     
     Returns
     -------
