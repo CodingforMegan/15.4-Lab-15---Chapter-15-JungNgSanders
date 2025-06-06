@@ -77,112 +77,13 @@ Use a test driver to insert 15–20 random integers
 
 ### 📤 Insertion Sample Output
 ```
-Inserted 22
-     [22]
-
-Inserted 54
-   [22, 54]
-
-Inserted 59
- [22, 54, 59]
-
-Inserted 98
-              [54]
-         [22]  [59, 98]
-
-Inserted 32
-              [54]
-       [22, 32]  [59, 98]
-
-Inserted 74
-              [54]
-     [22, 32]  [59, 74, 98]
-
-Inserted 76
-                             [54, 74]
-              [22, 32]  [59]  [76, 98]  [59, 74, 98]
-
-Inserted 12
-                             [54, 74]
-            [12, 22, 32]  [59]  [76, 98]  [59, 74, 98]
-
-Inserted 72
-                             [54, 74]
-          [12, 22, 32]  [59, 72]  [76, 98]  [59, 74, 98]
-
-Inserted 90
-                             [54, 74]
-        [12, 22, 32]  [59, 72]  [76, 90, 98]  [59, 74, 98]
-
-In-Order Traversal:
-[12, 22, 32, 54, 59, 72, 74, 76, 90, 98]
+will update after fixing bugs
 ```
 ![Sample Output](sample_output_01.png)
 
 ### 📤 Search & Deletion Sample Output
 ```
-Searching for 22: Found
-
-Searching for 54: Found
-
-Searching for 59: Found
-
-Searching for 98: Found
-
-Searching for 32: Found
-
-Searching for 74: Found
-
-Searching for 76: Not Found
-
-Searching for 12: Found
-
-Searching for 72: Found
-
-Searching for 90: Not Found
-
-Removed 22
-                             [54, 74]
-          [12, 32]  [59, 72]  [76, 90, 98]  [59, 74, 98]
-
-Removed 54
-                             [59, 74]
-            [12, 32]  [72]  [76, 90, 98]  [59, 74, 98]
-
-Removed 59
-                             [32, 74]
-            [12]  [72, 72]  [76, 90, 98]  [59, 74, 98]
-
-Removed 98
-                             [32, 74]
-              [12]  [72, 72]  [76, 90, 98]  [59, 74]
-
-Removed 32
-                             [72, 74]
-                [12]  [72]  [76, 90, 98]  [59, 74]
-
-Removed 74
-                             [72, 76]
-                  [12]  [72]  [90, 98]  [59, 74]
-
-Removed 76
-                             [72, 90]
-                    [12]  [72]  [98]  [59, 74]
-
-Removed 12
-                      [90]
-          [12, 72, 72]  [98]  [59, 74]
-
-Removed 72
-                      [90]
-            [12, 72]  [98]  [59, 74]
-
-Removed 90
-                      [72]
-            [12]  [98, 98]  [59, 74]
-
-In-Order Traversal:
-[12, 72, 98, 98]
+will update after fixing bugs
 ```
 ![Sample Output](sample_output_02.png)
 
