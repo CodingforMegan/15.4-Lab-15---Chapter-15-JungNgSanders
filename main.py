@@ -12,11 +12,35 @@ import matplotlib.pyplot as plt
 import networkx as nx
 
 def visualize_tree(root):
+    """
+    Builds an instance of a 2-3-4 Tree starting from the root node and visualizes it using the networkx and matplotlib libraries.
+
+    Parameters
+    ----------
+    root : root node of the 2-3-4 Tree
+    
+    Returns
+    -------
+    None. Displays the Graph representation of the 2-3-4 Tree
+    """ 
     G = nx.DiGraph()
     pos = {}
     labels = {}
 
     def add_node(node, parent_id=None, depth=0, pos_x=0, sibling_offset=1.0):
+        """
+        Adds the nodes of a 2-3-4 Tree to an instance of a DiGraph from the networkx library     
+        Parameters
+        ----------
+        node : Node234 instnance
+        depth : int
+        pos_x : float
+        sibling_offset : float
+        
+        Returns
+        -------
+        None. 
+        """ 
         node_id = id(node)
         label = ','.join(map(str, node.keys))
         G.add_node(node_id)
@@ -41,6 +65,19 @@ def visualize_tree(root):
 
 # Demo Main()
 def main():
+    """
+    Builds an instance of a 2-3-4 Tree starting from the root node, inserts random integers that are multiples of 7 from 1 to 100, 
+    visualizes the tree, and traverses the Tree in order. Performs a test on the contain() and remove() methods from the Tree234 class.
+
+    Parameters
+    ----------
+    None
+    
+    Returns
+    -------
+    None. Visualizes the 2-3-4 Tree after the insert(), remove(), and contain() methods are called, as well as th visualization of
+    the in-order traversal of the 2-3-4 Tree.
+    """ 
     tree = Tree234()
     values = random.sample(range(1, 101), 7)
     for v in values:
