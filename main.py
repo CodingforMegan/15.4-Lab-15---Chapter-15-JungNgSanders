@@ -96,6 +96,10 @@ def main():
         print(f"Searching for {v}: {'Found' if tree.contain(v) else 'Not Found'}")
         print()
 
+    random_key = random.sample(range(1, 101), 1)
+    for v in random_key:
+        print(f"Searching for a random value {v}: {'Found' if tree.contains(v) else 'Not Found'}")
+        print()
 
     for v in values:
         tree.remove(v)
