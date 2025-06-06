@@ -89,12 +89,9 @@ class Node234:
             self.children.insert(idx + 1, rightChild)
             if len(self.children) > 4:
                 self.children = self.children[:4]
-'''
 
-
-
-'''
-
+# =================================
+# =================================
 class Tree234:
     """
     Implements a 2-3-4 Tree.
@@ -275,7 +272,6 @@ class Tree234:
             parent.insert(mid_key, left, right)
 
 
-
     def remove(self, key):
         """
         Removes a key from the 234 Tree and uses successor replacement and preemptive merging to preserve the properties of the 2-3-4 Tree
@@ -294,39 +290,35 @@ class Tree234:
             raise ValueError("Tree is empty. Cannot remove key.")
 
         def _remove(node, key):
-            if not node:
-                return
-
             if key in node.keys:
-                if node.is_leaf(): # Leaf node
-                    if len(node.keys) > 1:
-                        node.keys.remove(key)
-                    else:
+                if node.is_leaf():
+                    node.keys.remove(key)
+                    if not node.keys:
                         self._handle_underflow(node, key)
-                else: # Internal node
+                else:
                     idx = node.keys.index(key)
                     if idx + 1 < len(node.children):
                         successor = self._find_successor(node.children[idx + 1])
                         node.keys[idx] = successor
                         _remove(node.children[idx + 1], successor)
-    
-
             else: # Key not in current node
                 if node.is_leaf():
                     # Key not found and it's a leaf node, so key is not in the tree
                     return
-
                 # Key not found and it's an internal node, descend to the appropriate child
                 for i, k in enumerate(node.keys):
                     if key < k:
                         _remove(node.children[i], key)
                         return # Return after recursive call
+
                 # If key is greater than all keys in the node, descend to the last child
                 _remove(node.children[-1], key)
 
-
         _remove(self.root, key)
 
+'''
+
+'''
 
     def _find_successor(self, node):
         """
