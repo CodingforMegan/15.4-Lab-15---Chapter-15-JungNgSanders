@@ -8,7 +8,7 @@
 
 🔧 Option 1: Reflect, Refactor, and Rebuild
 
-## 🧪 Option 2: Build a B-Tree from Scratch in Java
+## 🧪 Option 2: Build a B-Tree from Scratch in Python
 
 - Create a 2-3-4 Tree node structure
   
