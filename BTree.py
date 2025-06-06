@@ -23,6 +23,11 @@ class Node234:
         return len(self.keys) == 3
 
     def insert(self, key, leftChild=None, rightChild=None):
+        # Handle Duplicate key
+        if key in self.root.keys:
+            print(f"Key {key} already exists. Skipping insertion.")
+            return
+            
         if self.is_full():
             raise ValueError("Cannot insert into a full 4-node. Must split first.")
 
@@ -76,12 +81,7 @@ class Tree234:
             self.root = Node234([key])
             return
 
-        # Case 2: Duplicate key
-        if key in self.root.keys:
-            print(f"Key {key} already exists. Skipping insertion.")
-            return
-
-        # Case 3: Full root
+        # Case 2: Full root
         if self.root.is_full():
             self.root = self.split_node(self.root, None)
 
