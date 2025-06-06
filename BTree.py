@@ -11,36 +11,6 @@ from collections import deque
 #import matplotlib.pyplot as plt
 #import networkx as nx
 
-def visualize_tree(root):
-    G = nx.DiGraph()
-    pos = {}
-    labels = {}
-
-    def add_node(node, parent_id=None, depth=0, pos_x=0, sibling_offset=1.0):
-        node_id = id(node)
-        label = ','.join(map(str, node.keys))
-        G.add_node(node_id)
-        labels[node_id] = label
-        pos[node_id] = (pos_x, -depth)
-
-        if parent_id is not None:
-            G.add_edge(parent_id, node_id)
-
-        n_children = len(node.children)
-        if n_children > 0:
-            width = sibling_offset * (n_children - 1)
-            start_x = pos_x - width / 2
-            for i, child in enumerate(node.children):
-                add_node(child, node_id, depth + 1, start_x + i * sibling_offset, sibling_offset / 2)
-
-    add_node(root)
-    plt.figure(figsize=(8, 4))
-    nx.draw(G, pos, labels=labels, with_labels=True, node_size=2000, node_color='lightblue', font_size=10)
-    plt.title("2-3-4 Tree Visualization")
-    plt.show()
-
-
-
 class Node234:
     def __init__(self, keys=None, children=None):
         self.keys = keys if keys else []
@@ -51,7 +21,6 @@ class Node234:
 
     def is_full(self):
         return len(self.keys) == 3
-        
 
     def insert(self, key, leftChild=None, rightChild=None):
         if self.is_full():
@@ -177,13 +146,19 @@ class Tree234:
                     successor = self._find_successor(node.children[idx + 1])
                     node.keys[idx] = successor
                     _remove(node.children[idx + 1], successor)
-            else:
+            else: # Key not in current node
+                if node.is_leaf():
+                    # Key not found and it's a leaf node, so key is not in the tree
+                    return
+
+                # Key not found and it's an internal node, descend to the appropriate child
                 for i, k in enumerate(node.keys):
                     if key < k:
                         _remove(node.children[i], key)
-                        break
-                else:
-                    _remove(node.children[-1], key)
+                        return # Return after recursive call
+                # If key is greater than all keys in the node, descend to the last child
+                _remove(node.children[-1], key)
+
 
         _remove(self.root, key)
 
@@ -201,8 +176,10 @@ class Tree234:
 
         parent, idx = self._find_parent(self.root, node)
 
+        # Ensure we only attempt to borrow from left sibling if it exists and has enough keys
         if idx > 0 and len(parent.children[idx - 1].keys) > 1:
             self._borrow_from_left_sibling(parent, idx)
+        # Ensure we only attempt to borrow from right sibling if it exists and has enough keys
         elif idx < len(parent.children) - 1 and len(parent.children[idx + 1].keys) > 1:
             self._borrow_from_right_sibling(parent, idx)
         else:
@@ -228,8 +205,10 @@ class Tree234:
         left_sibling = parent.children[idx - 1]
         node = parent.children[idx]
 
-        node.keys.insert(0, parent.keys[idx - 1])
-        parent.keys[idx - 1] = left_sibling.keys.pop()
+        # The key to borrow from the parent is at index idx - 1
+        node.keys.insert(0, parent.keys.pop(idx - 1))
+        parent.keys.insert(idx - 1, left_sibling.keys.pop())
+
 
         if left_sibling.children:
             node.children.insert(0, left_sibling.children.pop())
@@ -238,8 +217,10 @@ class Tree234:
         right_sibling = parent.children[idx + 1]
         node = parent.children[idx]
 
-        node.keys.append(parent.keys[idx])
-        parent.keys[idx] = right_sibling.keys.pop(0)
+        # The key to borrow from the parent is at index idx
+        node.keys.append(parent.keys.pop(idx))
+        parent.keys.insert(idx, right_sibling.keys.pop(0))
+
 
         if right_sibling.children:
             node.children.append(right_sibling.children.pop(0))
@@ -250,23 +231,23 @@ class Tree234:
 
         if idx > 0:
             left_sibling = parent.children[idx - 1]
-            left_sibling.keys.append(parent.keys[idx - 1])
+            # Merge node's key from parent and node's keys into left sibling
+            left_sibling.keys.append(parent.keys.pop(idx - 1))
             left_sibling.keys.extend(node.keys)
             left_sibling.children.extend(node.children)
-            parent.keys.pop(idx - 1)
             parent.children.pop(idx)
         else:
             right_sibling = parent.children[idx + 1]
-            node.keys.append(parent.keys[idx])
+            # Merge node's key from parent and right sibling's keys into node
+            node.keys.append(parent.keys.pop(idx))
             node.keys.extend(right_sibling.keys)
             node.children.extend(right_sibling.children)
-            parent.keys.pop(idx)
             parent.children.pop(idx + 1)
 
         if not parent.keys and parent == self.root:
+            # If parent is root and becomes empty, the fused node becomes the new root
             self.root = left_sibling if idx > 0 else node
-        elif not parent.keys:
-            self._handle_underflow(parent, parent.keys[0])
+        # Note: If the parent is not root and becomes empty, _handle_underflow will be called recursively on the parent in the next step of _remove.
 
 
     #def print_tree(self):
@@ -358,13 +339,14 @@ class Tree234:
 
 if __name__ == "__main__":
     tree = Tree234()
-    values = random.sample(range(1, 101), 7)
+    values = random.sample(range(1, 101), 10)
     for v in values:
         tree.insert(v)
         print(f"Inserted {v}")
         print(tree.visualize())
         print()
 
+    visualize_tree(tree.root)
 
     print("In-Order Traversal:")
     print(tree.inOrderTraversal())
@@ -380,6 +362,7 @@ if __name__ == "__main__":
         print(tree.visualize())
         print()
 
+    visualize_tree(tree.root)
 
     print("In-Order Traversal:")
     print(tree.inOrderTraversal())
