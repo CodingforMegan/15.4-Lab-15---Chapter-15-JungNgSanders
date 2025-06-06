@@ -77,7 +77,46 @@ Use a test driver to insert 15–20 random integers
 
 ### 📤 Insertion Sample Output
 ```
-will update after fixing bugs
+Inserted 11
+     [11]
+
+Inserted 17
+   [11, 17]
+
+Inserted 21
+ [11, 17, 21]
+
+Inserted 13
+              [17]
+         [11, 13]  [21]
+
+Inserted 30
+              [17]
+       [11, 13]  [21, 30]
+
+Inserted 47
+              [17]
+     [11, 13]  [21, 30, 47]
+
+Inserted 83
+                    [17, 30]
+            [11, 13]  [21]  [47, 83]
+
+Inserted 56
+                    [17, 30]
+          [11, 13]  [21]  [47, 56, 83]
+
+Inserted 35
+                           [17, 30, 56]
+                  [11, 13]  [21]  [35, 47]  [83]
+
+Inserted 94
+                               [30]
+                            [17]  [56]
+                [11, 13]  [21]  [35, 47]  [83, 94]
+
+In-Order Traversal:
+[11, 13, 17, 21, 30, 35, 47, 56, 83, 94]
 ```
 ![Sample Output](sample_output_01.png)
 
