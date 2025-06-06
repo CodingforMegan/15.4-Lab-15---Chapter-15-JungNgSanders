@@ -35,18 +35,14 @@ Total	                                   30 pts
 Lab15 2-3-4 Tree
 ├── main.py:
 ├           visualize_tree()
-├           ??
-├           ??
-├           ??
-├           ??
-├           ??
 ├── BTree.py: 
 ├           Node234 class, Tree234 class
 ├── tests/
 ├           test_BTree.py
 ├           test_main.py
 ├           __init__.py  
-├── sample_output.png
+├── sample_output_01.png
+├── sample_output_02.png
 └── README.md
 ```
 ### 🔨Implemented Methods
@@ -69,9 +65,9 @@ Lab15 2-3-4 Tree
 ### ✅ Input
 ```
 Random generated values list
-keys = [7, 11, 43, 62, 68, 81, 84, 90, 91, 94]
+keys = [8, 21, 57, 59, 68, 72, 75, 78, 80, 93]
 Random value to test contains() for non-existent key:
-Random_value = 
+Random_value = 88
 ```
 ```
 Use a test driver to insert 15–20 random integers
