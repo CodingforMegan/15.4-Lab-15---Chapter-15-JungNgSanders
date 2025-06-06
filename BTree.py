@@ -316,36 +316,51 @@ class Tree234:
         if right_sibling.children:
             node.children.append(right_sibling.children.pop(0))
 
-
     def _merge_with_siblings(self, parent, idx):
         node = parent.children[idx]
         if idx > 0:
+            # Merge with left sibling
             left_sibling = parent.children[idx - 1]
             merge_key = parent.keys.pop(idx - 1)
             parent.children.pop(idx)
 
-            # Only include keys not already duplicated
+            # Prevent duplicate keys
             if merge_key not in left_sibling.keys:
                 left_sibling.keys.append(merge_key)
 
             left_sibling.keys.extend(node.keys)
             left_sibling.children.extend(node.children)
 
+            # If parent is now empty and was root, promote the merged node
+            if parent == self.root and not parent.keys:
+                self.root = left_sibling
+                return
+
         else:
+            # Merge with right sibling
             right_sibling = parent.children[idx + 1]
             merge_key = parent.keys.pop(idx)
             parent.children.pop(idx + 1)
 
+            # Prevent duplicate keys
             if merge_key not in node.keys:
                 node.keys.append(merge_key)
 
             node.keys.extend(right_sibling.keys)
             node.children.extend(right_sibling.children)
-        
-        if not parent.keys and parent == self.root:
-            self.root = left_sibling if idx > 0 else node
-        elif not parent.keys:
-            self._handle_underflow(parent, None)
+
+            # If parent is now empty and was root
+            # Promote the merged node
+            if parent == self.root and not parent.keys:
+                self.root = node
+                return
+
+        # If parent becomes empty and is not the root, recurse upward to handle underflow
+        if not parent.keys and parent != self.root:
+            grandparent, parent_idx = self._find_parent(self.root, parent)
+            if grandparent:
+                self._handle_underflow(parent, None)
+    
 
 
     def visualize(self):
