@@ -237,39 +237,33 @@ class Tree234:
 
     def _merge_with_siblings(self, parent, idx):
         node = parent.children[idx]
-
         if idx > 0:
             left_sibling = parent.children[idx - 1]
-            # Merge node's key from parent and node's keys into left sibling
-            left_sibling.keys.append(parent.keys.pop(idx - 1))
+            merge_key = parent.keys.pop(idx - 1)
+            parent.children.pop(idx)
+
+            # Only include keys not already duplicated
+            if merge_key not in left_sibling.keys:
+                left_sibling.keys.append(merge_key)
+
             left_sibling.keys.extend(node.keys)
             left_sibling.children.extend(node.children)
-            parent.children.pop(idx)
+
         else:
             right_sibling = parent.children[idx + 1]
-            # Merge node's key from parent and right sibling's keys into node
-            node.keys.append(parent.keys.pop(idx))
-            node.keys.extend(right_sibling.keys)
-            node.children.extend(right_sibling.children)
+            merge_key = parent.keys.pop(idx)
             parent.children.pop(idx + 1)
 
-        if not parent.keys:
-            if parent == self.root:
-                # If parent is root and becomes empty, the fused node becomes the new root
-                self.root = left_sibling if idx > 0 else node
-                # Note: If the parent is not root and becomes empty, _handle_underflow will be called recursively on the parent in the next step of _remove.
-            else:
-                self._handle_underflow(parent, None)
+            if merge_key not in node.keys:
+                node.keys.append(merge_key)
 
-
-    #def print_tree(self):
-        #def _print_tree(node, indent=""):
-            #if not node:
-                #return
-            #print(indent + str(node.keys))
-            #for child in node.children:
-                #_print_tree(child, indent + "  ")
-        #_print_tree(self.root)
+            node.keys.extend(right_sibling.keys)
+            node.children.extend(right_sibling.children)
+        
+        if not parent.keys and parent == self.root:
+            self.root = left_sibling if idx > 0 else node
+        elif not parent.keys:
+            self._handle_underflow(parent, None)
 
 
     def visualize(self):
