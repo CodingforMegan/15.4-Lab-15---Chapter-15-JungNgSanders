@@ -324,33 +324,38 @@ class Tree234:
         node = parent.children[idx]
 
         if idx > 0:
-            # Merge with left sibling
+            # Safe to merge with left sibling
             left_sibling = parent.children[idx - 1]
+            if idx - 1 >= len(parent.keys):
+                raise IndexError("Parent keys and children misaligned during left merge") 
+            
             merge_key = parent.keys.pop(idx - 1)
             parent.children.pop(idx)
 
-            # Prevent duplicate keys
+            # Remove duplicate
             if merge_key in node.keys:
                 node.keys.remove(merge_key)
             if merge_key in left_sibling.keys:
                 left_sibling.keys.remove(merge_key)
 
-            left_sibling.keys.extend(node.keys)
+            left_sibling.keys.append(merge_key)
             left_sibling.keys.extend(node.keys)
             left_sibling.children.extend(node.children)
 
-            # If parent is now empty and was root, promote the merged node
             if parent == self.root and not parent.keys:
                 self.root = left_sibling
                 return
 
-        else:
-            # Merge with right sibling
+        elif idx < len(parent.children) - 1:
+            # Safe to merge with right sibling
             right_sibling = parent.children[idx + 1]
+            if idx + 1 >= len(parent.keys):
+                raise IndexError("Parent keys and children misaligned during right merge")
+
             merge_key = parent.keys.pop(idx)
             parent.children.pop(idx + 1)
 
-            # Prevent duplicate keys
+            # Remove duplicates
             if merge_key in node.keys:
                 node.keys.remove(merge_key)
             if merge_key in right_sibling.keys:
@@ -360,11 +365,18 @@ class Tree234:
             node.keys.extend(right_sibling.keys)
             node.children.extend(right_sibling.children)
 
-            # If parent is now empty and was root
-            # Promote the merged node
             if parent == self.root and not parent.keys:
                 self.root = node
                 return
+        else:
+            raise IndexError("Cannot merge: both siblings missing or inconsistent")
+
+
+        # Recursive underflow fix
+        if not parent.keys and parent != self.root:
+            grandparent, parent_idx = self._find_parent(self.root, parent)
+            if grandparent:
+                self._handle_underflow(parent, None)
 
 
     def visualize(self):
