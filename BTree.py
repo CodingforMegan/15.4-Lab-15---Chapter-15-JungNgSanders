@@ -131,6 +131,14 @@ class Tree234:
         self.root = None
 
     def inOrderTraversal(self):
+        """
+        Recursively traverses the 2-3-4 Tree in-order.
+    
+        Returns
+        -------
+        result : list of ints
+        """
+
         result = []
         def _inOrderTraversal(node, result):
             if node is None:
@@ -147,6 +155,17 @@ class Tree234:
 
 
     def contains(self, key):
+        """
+        Returns a bool checking if a key is contained in the 2-3-4 Tree
+        
+        Parameters
+        ----------
+        key : int
+        
+        Returns
+        -------
+        Bool
+        """
 
         def _search(node, key):
             if not node:
@@ -161,6 +180,14 @@ class Tree234:
         return _search(self.root, key)
 
     def insert(self, key):
+        """
+        Inserts a key in a 2-3-4 Tree based on the rules for a 2-3-4 Tree using node splitting   
+        
+        Parameters
+        ----------
+        key : int
+        """
+
         # Case 1: empty tree
         if not self.root:
             self.root = Node234([key])
@@ -198,6 +225,19 @@ class Tree234:
         node.insert(key)
 
     def _find_index(self, keys, key):
+        """
+        Searches for the index of where the key should be inserted into among sorted keys
+        
+        Parameters
+        ----------
+        keys : list of ints
+        key : int
+
+        Returns
+        -------
+        i : int which is the index of where they key should be inserted
+        """
+
         for i, k in enumerate(keys):
             if key < k:
                 return i
@@ -205,6 +245,20 @@ class Tree234:
 
 
     def split_node(self, node, parent=None, index=None):
+        """
+        Splits a node by replacing the old child node with new left and right in parent's children list. If the node is the root, the node is
+        split into two nodes.        
+        Parameters
+        ----------
+        node : Node234 instance
+        parent : optional, Node234 instance
+        index : optional, int
+
+        Returns
+        -------
+        Node234 if the original node was the root. None in other cases.
+        """
+
         left = Node234(node.keys[:1], node.children[:2])
         right = Node234(node.keys[2:], node.children[2:])
         mid_key = node.keys[1]
@@ -218,6 +272,19 @@ class Tree234:
 
 
     def remove(self, key):
+        """
+        Removes a key from the 234 Tree and uses successor replacement and preemptive merging to preserve the properties of the 2-3-4 Tree
+        if needed.
+        
+        Parameters
+        ----------
+        key : int
+
+        Raises
+        ------
+        ValueError if the tree is empty
+        """
+
         if not self.root:
             raise ValueError("Tree is empty. Cannot remove key.")
 
@@ -257,12 +324,34 @@ class Tree234:
 
 
     def _find_successor(self, node):
+        """
+        Finds the successor node which is used for removing an internal node in the remove() method
+      
+        Parameters
+        ----------
+        node : Node234 instance
+
+        Returns
+        -------
+        Any, the smallest key of the subtree, which is the in-order successor
+        """
+
         while node.children:
             node = node.children[0]
         return node.keys[0]
 
 
     def _handle_underflow(self, node, key):
+        """
+        Rebalances the tree when a node has fewer keys as a result of a key deletion. Uses key borrowing from a sibling or merging 
+        with a sibling to update the tree to be balanced according to the properties of a 2-3-4 Tree.
+      
+        Parameters
+        ----------
+        node : Node234 instance
+        key : int
+        """
+
         if node == self.root and len(node.keys) == 0:
             self.root = node.children[0] if node.children else None
             return
@@ -281,6 +370,19 @@ class Tree234:
 
 
     def _find_parent(self, node, child):
+        """
+        Recursively finds a node's parent
+      
+        Parameters
+        ----------
+        node : Node234 instance
+        child : Node234 instance
+
+        Returns
+        -------
+        A tuple containing the parent node (None if not found) and and the index of the child that is in the parent's keys. 
+        """
+
         if not node or node == child:
             return None, -1
 
@@ -296,6 +398,14 @@ class Tree234:
 
 
     def _borrow_from_left_sibling(self, parent, idx):
+        """
+        Borrows a key from the left sibling to handle an underflow
+
+        Parameters
+        ----------
+        parent : Node234 instance
+        idx : int
+        """
         left_sibling = parent.children[idx - 1]
         node = parent.children[idx]
 
@@ -308,6 +418,15 @@ class Tree234:
             node.children.insert(0, left_sibling.children.pop())
 
     def _borrow_from_right_sibling(self, parent, idx):
+        """
+        Borrows a key from the right sibling to handle an underflow
+
+        Parameters
+        ----------
+        parent : Node234 instance
+        idx : int
+        """
+
         right_sibling = parent.children[idx + 1]
         node = parent.children[idx]
 
@@ -321,6 +440,17 @@ class Tree234:
 
     
     def _merge_with_siblings(self, parent, idx):
+        """
+        Handles an underflow by merging a node with its sibling and pulling down a key from the parent node. If a node and its siblind nodes
+        does not have enough keys, a merge is performed with either the right or left sibling and a key from the parent is placed in the middle.
+        Since a merge might lead to underflow, this process is done recursively
+
+        Parameters
+        ----------
+        parent : Node234 instance
+        idx : int
+        """
+
         node = parent.children[idx]
 
         if idx > 0:
@@ -380,6 +510,14 @@ class Tree234:
 
 
     def visualize(self):
+        """
+        Produces a string visualization of the 2-3-4 Tree in level order
+
+        Returns
+        -------
+        list : a string representation of the hierarchy of the 2-3-4 Tree. <empty tree> is returned if the tree is empty.
+        """
+
         if not self.root:
             return "<empty tree>"
 
