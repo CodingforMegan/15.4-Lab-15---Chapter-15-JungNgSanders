@@ -69,7 +69,7 @@ Lab15 2-3-4 Tree
 ### ✅ Input
 ```
 Random generated values list
-keys = [15, 17, 18, 24, 18, 15, 46, 24, 44, 92]
+keys = [4, 24, 33, 47, 54, 57, 61, 63, 81, 54, 57, 63]
 ```
 ```
 Use a test driver to insert 15–20 random integers
@@ -77,46 +77,45 @@ Use a test driver to insert 15–20 random integers
 
 ### 📤 Insertion Sample Output
 ```
-Inserted 18
-     [18]
-
-Inserted 46
-   [18, 46]
-
-Inserted 89
- [18, 46, 89]
-
-Inserted 56
-              [46]
-         [18]  [56, 89]
-
-Inserted 95
-              [46]
-       [18]  [56, 89, 95]
-
-Inserted 15
-              [46]
-     [15, 18]  [56, 89, 95]
-
 Inserted 24
-              [46]
-   [15, 18, 24]  [56, 89, 95]
+     [24]
 
-Inserted 44
-                             [18, 46]
-            [15]  [24, 44]  [15, 18, 24]  [56, 89, 95]
+Inserted 54
+   [24, 54]
 
-Inserted 92
-                           [18, 18, 46]
-                  [15]  [24]  [15]  [24, 44, 92]
+Inserted 47
+ [24, 47, 54]
 
-Inserted 17
-                               [18]
-                            [18]  [46]
-                [15, 17]  [24]  [15]  [24, 44, 92]
+Inserted 82
+              [47]
+         [24]  [54, 82]
+
+Inserted 81
+              [47]
+       [24]  [54, 81, 82]
+
+Inserted 4
+              [47]
+     [4, 24]  [54, 81, 82]
+
+Inserted 63
+                             [47, 81]
+              [4, 24]  [54, 63]  [82]  [54, 81, 82]
+
+Inserted 57
+                             [47, 81]
+            [4, 24]  [54, 57, 63]  [82]  [54, 81, 82]
+
+Inserted 33
+                             [47, 81]
+          [4, 24, 33]  [54, 57, 63]  [82]  [54, 81, 82]
+
+Inserted 61
+                           [47, 57, 81]
+            [4, 24, 33]  [54]  [61, 63]  [54, 57, 63]
 
 In-Order Traversal:
-[15, 17, 18, 24, 18, 15, 46, 24, 44, 92]
+[4, 24, 33, 47, 54, 57, 61, 63, 81, 54, 57, 63]
 ```
 ![Sample Output](sample_output_01.png)
 
