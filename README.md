@@ -117,7 +117,7 @@ Inserted 61
 In-Order Traversal:
 [4, 24, 33, 47, 54, 57, 61, 63, 81, 54, 57, 63]
 ```
-
+![Sample Output](sample_output_01.png)
 
 ### 📤 Search & Deletion Sample Output
 ```
@@ -184,7 +184,7 @@ Removed 61
 In-Order Traversal:
 [4, 54, 63, 63, 54, 57]
 ```
-
+![Sample Output](sample_output_02.png)
 
 ### 📊 Test
 To run the unit tests for the repository, run the commands below
