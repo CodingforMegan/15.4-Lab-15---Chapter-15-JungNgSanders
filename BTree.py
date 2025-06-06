@@ -12,17 +12,63 @@ from collections import deque
 #import networkx as nx
 
 class Node234:
+    """
+    Implements a node in a 2-3-4 Tree.
+
+    Attributes
+    ----------
+    keys : Any
+    children : Any
+
+    Methods
+    -------
+    is_leaf()
+        Returns a bool checking if a node has no children.
+    is_full()
+        Returns a bool checking if the node has the full amount of keys, which is 3 for a 2-3-4 Tree.
+    insert(key, leftChild=None, rightChild=None)
+        Inserts a node in a 2-3-4 Tree based on the rules for a 2-3-4 Tree.       
+        
+    """
+
     def __init__(self, keys=None, children=None):
         self.keys = keys if keys else []
         self.children = children if children else []
 
     def is_leaf(self):
+        """
+        Returns a bool checking if a node has no children.
+
+        Returns
+        -------
+        Bool
+        """
+
         return len(self.children) == 0
 
     def is_full(self):
+        """
+        Returns a bool checking if the node has the full amount of keys, which is 3 for a 2-3-4 Tree.
+
+        Returns
+        -------
+        Bool
+        """
+
         return len(self.keys) == 3
 
     def insert(self, key, leftChild=None, rightChild=None):
+        """
+        Inserts a node in a 2-3-4 Tree based on the rules for a 2-3-4 Tree in sorted order.
+        
+        Parameters
+        ----------
+        key : int
+        leftChild : Any  
+        rightChild : Any
+        
+        """
+
         if key in self.keys:
             print(f"Key {key} already exists. Skipping insertion.")
             return
@@ -41,6 +87,43 @@ class Node234:
 
 
 class Tree234:
+    """
+    Implements a 2-3-4 Tree.
+
+    Attributes
+    ----------
+    root : Any
+    
+    Methods
+    -------
+    inOrderTraversal()
+        Recursively traverses the 2-3-4 Tree in-order.
+    contain(key)
+        Returns a bool checking if a key is contained in the 2-3-4 Tree.
+    insert(key)
+        Inserts a key in a 2-3-4 Tree based on the rules for a 2-3-4 Tree using node splitting.      
+    _find_index(keys, key)
+        Searched for the index of a key in a node
+    split_node(node, parent=None, index=None)
+        Splits a node by replacing the old child node with new left and right in parent's children list. If the node is the root, the node is
+        split into two nodes.
+    remove(key)
+        Removes a key from the 234 Tree and uses preemptive merging to preserve the properties of the 2-3-4 Tree
+    _find_successor(node)
+        Finds the successor node which is used for removing an internal nodef in the remove() method
+    _handle_underflow(node, key)
+        Handles the case when merging is necessary to preserve the properties of a 2-3-4 Tree
+    _find_parent()
+        Finds the parent of a node
+    _borrow_from_left_sibling(node, child)
+        Borrows a key from the left sibling to prep for a left rotation
+    _borrow_from_right_sibling(parent, idx)
+        Borrows a key from the right sibling to prep for a right rotation
+    _merge_with_siblings(parent, idx)
+        Performs a left or right rotation based on the properties of the 2-3-4 Tree and merges.
+    visualize()
+    """
+
     def __init__(self):
         self.root = None
 
