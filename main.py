@@ -93,7 +93,7 @@ def main():
     visualize_tree(tree.root)
 
     for v in values:
-        print(f"Searching for {v}: {'Found' if tree.contain(v) else 'Not Found'}")
+        print(f"Searching for {v}: {'Found' if tree.contains(v) else 'Not Found'}")
         print()
 
     random_key = random.sample(range(1, 101), 1)
