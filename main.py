@@ -42,12 +42,12 @@ def visualize_tree(root):
 # Demo Main()
 def main():
     if __name__ == "__main__":
-    tree = Tree234()
-    for value in [10, 20, 5, 6, 12, 30, 25]:
-        tree.insert(value)
-        print(f"Inserted {value}")
-        print(tree.visualize())
-        print()
+        tree = Tree234()
+        for value in [10, 20, 5, 6, 12, 30, 25]:
+            tree.insert(value)
+            print(f"Inserted {value}")
+            print(tree.visualize())
+            print()
 
     visualize_tree(tree.root)
 
