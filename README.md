@@ -69,7 +69,7 @@ Lab15 2-3-4 Tree
 ### ✅ Input
 ```
 Random generated values list
-keys = [10, 12, 17, 29, 85, 86, 91]
+keys = [15, 17, 18, 24, 18, 15, 46, 24, 44, 92]
 ```
 ```
 Use a test driver to insert 15–20 random integers
@@ -77,91 +77,123 @@ Use a test driver to insert 15–20 random integers
 
 ### 📤 Insertion Sample Output
 ```
-Inserted 31
-     [31]
+Inserted 18
+     [18]
 
-Inserted 97
-   [31, 97]
+Inserted 46
+   [18, 46]
 
-Inserted 21
- [21, 31, 97]
+Inserted 89
+ [18, 46, 89]
 
-Inserted 82
-              [31]
-         [21]  [82, 97]
+Inserted 56
+              [46]
+         [18]  [56, 89]
 
-Inserted 35
-              [31]
-       [21]  [35, 82, 97]
+Inserted 95
+              [46]
+       [18]  [56, 89, 95]
 
-Inserted 30
-              [31]
-     [21, 30]  [35, 82, 97]
+Inserted 15
+              [46]
+     [15, 18]  [56, 89, 95]
 
-Inserted 60
-                             [31, 82]
-              [21, 30]  [35, 60]  [97]  [35, 82, 97]
+Inserted 24
+              [46]
+   [15, 18, 24]  [56, 89, 95]
 
-Inserted 59
-                             [31, 82]
-            [21, 30]  [35, 59, 60]  [97]  [35, 82, 97]
+Inserted 44
+                             [18, 46]
+            [15]  [24, 44]  [15, 18, 24]  [56, 89, 95]
 
-Inserted 10
-                             [31, 82]
-          [10, 21, 30]  [35, 59, 60]  [97]  [35, 82, 97]
+Inserted 92
+                           [18, 18, 46]
+                  [15]  [24]  [15]  [24, 44, 92]
 
-Inserted 61
-                           [31, 59, 82]
-            [10, 21, 30]  [35]  [60, 61]  [35, 59, 60]
+Inserted 17
+                               [18]
+                            [18]  [46]
+                [15, 17]  [24]  [15]  [24, 44, 92]
+
+In-Order Traversal:
+[15, 17, 18, 24, 18, 15, 46, 24, 44, 92]
 ```
 
 
 ### 📤 Search & Deletion Sample Output
 ```
-Searching for 12: Found
+Searching for 18: Found
 
-Searching for 29: Found
+Searching for 46: Found
 
-Searching for 86: Found
+Searching for 89: Not Found
 
-Searching for 91: Found
+Searching for 56: Not Found
 
-Searching for 10: Found
+Searching for 95: Not Found
 
-Searching for 85: Found
+Searching for 15: Found
+
+Searching for 24: Not Found
+
+Searching for 44: Not Found
+
+Searching for 92: Found
 
 Searching for 17: Found
 
-Removed 12
-              [29]
-     [10, 17]  [85, 86, 91]
+Removed 18
+                               [15]
+                            [18]  [24]
+                [15, 17]  [24]  [15, 46]  [44, 92]
 
-Removed 29
-              [85]
-       [10, 17]  [86, 91]
+Removed 46
+                               [15]
+                            [18]  [24]
+                [15, 17]  [24]  [15, 46]  [44, 92]
 
-Removed 86
-              [85]
-         [10, 17]  [91]
+Removed 89
+                               [15]
+                            [18]  [24]
+                [15, 17]  [24]  [15, 46]  [44, 92]
 
-Removed 91
-              [17]
-         [10]  [85, 91]
+Removed 56
+                               [15]
+                            [18]  [24]
+                [15, 17]  [24]  [15, 46]  [44, 92]
 
-Removed 10
-              [85]
-         [10, 17]  [91]
+Removed 95
+                               [15]
+                            [18]  [24]
+                [15, 17]  [24]  [15, 46]  [44, 92]
 
-Removed 85
-              [17]
-         [10]  [91, 91]
+Removed 15
+                               [15]
+                            [18]  [24]
+                  [15, 17]  [24]  [46]  [44, 92]
+
+Removed 24
+                               [15]
+                            [18]  [44]
+                    [15, 17]  [24]  [46]  [92]
+
+Removed 44
+                      [15]
+                    [18]  []
+          [15, 17]  [24]  [46, 92, 92]
+
+Removed 92
+                      [15]
+                    [18]  []
+            [15, 17]  [24]  [46, 92]
 
 Removed 17
-              [91]
-           [10]  [91]
+                      [15]
+                    [18]  []
+            [15, 17]  [24]  [46, 92]
 
 In-Order Traversal:
-[10, 91, 91]
+[15, 17, 18, 24, 15, 46, 92]
 ```
 
 
