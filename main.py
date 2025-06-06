@@ -4,12 +4,11 @@
 
 #Course: Spr25_CS_034 CRN 39575
 #----------------------------------------------
-
 from typing import Optional, List
 from collections import deque
+import random
 import matplotlib.pyplot as plt
 import networkx as nx
-from BTree import Node234, Tree234
 
 def visualize_tree(root):
     G = nx.DiGraph()
@@ -41,16 +40,34 @@ def visualize_tree(root):
 
 # Demo Main()
 def main():
-    if __name__ == "__main__":
-        tree = Tree234()
-        for value in [10, 20, 5, 6, 12, 30, 25]:
-            tree.insert(value)
-            print(f"Inserted {value}")
-            print(tree.visualize())
-            print()
+    tree = Tree234()
+    values = random.sample(range(1, 101), 7)
+    for v in values:
+        tree.insert(v)
+        print(f"Inserted {v}")
+        print(tree.visualize())
+        print()
 
     visualize_tree(tree.root)
 
+    print("In-Order Traversal:")
+    print(tree.inOrderTraversal())
+
+    for v in values:
+        print(f"Searching for {v}: {'Found' if tree.contain(v) else 'Not Found'}")
+        print()
+
+
+    for v in values:
+        tree.remove(v)
+        print(f"Removed {v}")
+        print(tree.visualize())
+        print()
+
+    visualize_tree(tree.root)
+
+    print("In-Order Traversal:")
+    print(tree.inOrderTraversal())
 
 if __name__ == "__main__":
     main()
