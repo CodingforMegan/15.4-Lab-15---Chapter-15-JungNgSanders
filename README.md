@@ -117,84 +117,74 @@ Inserted 61
 In-Order Traversal:
 [4, 24, 33, 47, 54, 57, 61, 63, 81, 54, 57, 63]
 ```
-![Sample Output](sample_output_01.png)
+
 
 ### 📤 Search & Deletion Sample Output
 ```
-Searching for 18: Found
+Searching for 24: Found
 
-Searching for 46: Found
+Searching for 54: Found
 
-Searching for 89: Not Found
+Searching for 47: Found
 
-Searching for 56: Not Found
+Searching for 82: Not Found
 
-Searching for 95: Not Found
+Searching for 81: Found
 
-Searching for 15: Found
+Searching for 4: Found
 
-Searching for 24: Not Found
+Searching for 63: Found
 
-Searching for 44: Not Found
+Searching for 57: Found
 
-Searching for 92: Found
+Searching for 33: Found
 
-Searching for 17: Found
-
-Removed 18
-                               [15]
-                            [18]  [24]
-                [15, 17]  [24]  [15, 46]  [44, 92]
-
-Removed 46
-                               [15]
-                            [18]  [24]
-                [15, 17]  [24]  [15, 46]  [44, 92]
-
-Removed 89
-                               [15]
-                            [18]  [24]
-                [15, 17]  [24]  [15, 46]  [44, 92]
-
-Removed 56
-                               [15]
-                            [18]  [24]
-                [15, 17]  [24]  [15, 46]  [44, 92]
-
-Removed 95
-                               [15]
-                            [18]  [24]
-                [15, 17]  [24]  [15, 46]  [44, 92]
-
-Removed 15
-                               [15]
-                            [18]  [24]
-                  [15, 17]  [24]  [46]  [44, 92]
+Searching for 61: Found
 
 Removed 24
-                               [15]
-                            [18]  [44]
-                    [15, 17]  [24]  [46]  [92]
+                           [47, 57, 81]
+              [4, 33]  [54]  [61, 63]  [54, 57, 63]
 
-Removed 44
-                      [15]
-                    [18]  []
-          [15, 17]  [24]  [46, 92, 92]
+Removed 54
+                           [33, 57, 81]
+              [4]  [47, 54]  [61, 63]  [54, 57, 63]
 
-Removed 92
-                      [15]
-                    [18]  []
-            [15, 17]  [24]  [46, 92]
+Removed 47
+                           [33, 57, 81]
+                [4]  [54]  [61, 63]  [54, 57, 63]
 
-Removed 17
-                      [15]
-                    [18]  []
-            [15, 17]  [24]  [46, 92]
+Removed 82
+                           [33, 57, 81]
+                [4]  [54]  [61, 63]  [54, 57, 63]
+
+Removed 81
+                           [33, 57, 54]
+                  [4]  [54]  [61, 63]  [57, 63]
+
+Removed 4
+                    [57, 54]
+         [4, 33, 54]  [61, 63]  [57, 63]
+
+Removed 63
+                    [57, 54]
+           [4, 33, 54]  [61, 63]  [57]
+
+Removed 57
+                    [61, 54]
+             [4, 33, 54]  [63]  [57]
+
+Removed 33
+                    [61, 54]
+               [4, 54]  [63]  [57]
+
+Removed 61
+                    [54, 54]
+               [4]  [63, 63]  [57]
 
 In-Order Traversal:
-[15, 17, 18, 24, 15, 46, 92]
+[4, 54, 63, 63, 54, 57]
 ```
-![Sample Output](sample_output_02.png)
+
 
 ### 📊 Test
 To run the unit tests for the repository, run the commands below
