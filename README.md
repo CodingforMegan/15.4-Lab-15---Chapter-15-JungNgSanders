@@ -69,7 +69,7 @@ Lab15 2-3-4 Tree
 ### ✅ Input
 ```
 Random generated values list
-keys = [4, 24, 33, 47, 54, 57, 61, 63, 81, 54, 57, 63]
+keys = [12, 22, 32, 54, 59, 72, 74, 76, 90, 98]
 ```
 ```
 Use a test driver to insert 15–20 random integers
@@ -77,114 +77,113 @@ Use a test driver to insert 15–20 random integers
 
 ### 📤 Insertion Sample Output
 ```
-Inserted 24
-     [24]
+Inserted 22
+     [22]
 
 Inserted 54
-   [24, 54]
+   [22, 54]
 
-Inserted 47
- [24, 47, 54]
+Inserted 59
+ [22, 54, 59]
 
-Inserted 82
-              [47]
-         [24]  [54, 82]
+Inserted 98
+              [54]
+         [22]  [59, 98]
 
-Inserted 81
-              [47]
-       [24]  [54, 81, 82]
+Inserted 32
+              [54]
+       [22, 32]  [59, 98]
 
-Inserted 4
-              [47]
-     [4, 24]  [54, 81, 82]
+Inserted 74
+              [54]
+     [22, 32]  [59, 74, 98]
 
-Inserted 63
-                             [47, 81]
-              [4, 24]  [54, 63]  [82]  [54, 81, 82]
+Inserted 76
+                             [54, 74]
+              [22, 32]  [59]  [76, 98]  [59, 74, 98]
 
-Inserted 57
-                             [47, 81]
-            [4, 24]  [54, 57, 63]  [82]  [54, 81, 82]
+Inserted 12
+                             [54, 74]
+            [12, 22, 32]  [59]  [76, 98]  [59, 74, 98]
 
-Inserted 33
-                             [47, 81]
-          [4, 24, 33]  [54, 57, 63]  [82]  [54, 81, 82]
+Inserted 72
+                             [54, 74]
+          [12, 22, 32]  [59, 72]  [76, 98]  [59, 74, 98]
 
-Inserted 61
-                           [47, 57, 81]
-            [4, 24, 33]  [54]  [61, 63]  [54, 57, 63]
+Inserted 90
+                             [54, 74]
+        [12, 22, 32]  [59, 72]  [76, 90, 98]  [59, 74, 98]
 
 In-Order Traversal:
-[4, 24, 33, 47, 54, 57, 61, 63, 81, 54, 57, 63]
+[12, 22, 32, 54, 59, 72, 74, 76, 90, 98]
 ```
-![Sample Output](sample_output_01.png)
 
 ### 📤 Search & Deletion Sample Output
 ```
-Searching for 24: Found
+Searching for 22: Found
 
 Searching for 54: Found
 
-Searching for 47: Found
+Searching for 59: Found
 
-Searching for 82: Not Found
+Searching for 98: Found
 
-Searching for 81: Found
+Searching for 32: Found
 
-Searching for 4: Found
+Searching for 74: Found
 
-Searching for 63: Found
+Searching for 76: Not Found
 
-Searching for 57: Found
+Searching for 12: Found
 
-Searching for 33: Found
+Searching for 72: Found
 
-Searching for 61: Found
+Searching for 90: Not Found
 
-Removed 24
-                           [47, 57, 81]
-              [4, 33]  [54]  [61, 63]  [54, 57, 63]
+Removed 22
+                             [54, 74]
+          [12, 32]  [59, 72]  [76, 90, 98]  [59, 74, 98]
 
 Removed 54
-                           [33, 57, 81]
-              [4]  [47, 54]  [61, 63]  [54, 57, 63]
+                             [59, 74]
+            [12, 32]  [72]  [76, 90, 98]  [59, 74, 98]
 
-Removed 47
-                           [33, 57, 81]
-                [4]  [54]  [61, 63]  [54, 57, 63]
+Removed 59
+                             [32, 74]
+            [12]  [72, 72]  [76, 90, 98]  [59, 74, 98]
 
-Removed 82
-                           [33, 57, 81]
-                [4]  [54]  [61, 63]  [54, 57, 63]
+Removed 98
+                             [32, 74]
+              [12]  [72, 72]  [76, 90, 98]  [59, 74]
 
-Removed 81
-                           [33, 57, 54]
-                  [4]  [54]  [61, 63]  [57, 63]
+Removed 32
+                             [72, 74]
+                [12]  [72]  [76, 90, 98]  [59, 74]
 
-Removed 4
-                    [57, 54]
-         [4, 33, 54]  [61, 63]  [57, 63]
+Removed 74
+                             [72, 76]
+                  [12]  [72]  [90, 98]  [59, 74]
 
-Removed 63
-                    [57, 54]
-           [4, 33, 54]  [61, 63]  [57]
+Removed 76
+                             [72, 90]
+                    [12]  [72]  [98]  [59, 74]
 
-Removed 57
-                    [61, 54]
-             [4, 33, 54]  [63]  [57]
+Removed 12
+                      [90]
+          [12, 72, 72]  [98]  [59, 74]
 
-Removed 33
-                    [61, 54]
-               [4, 54]  [63]  [57]
+Removed 72
+                      [90]
+            [12, 72]  [98]  [59, 74]
 
-Removed 61
-                    [54, 54]
-               [4]  [63, 63]  [57]
+Removed 90
+                      [72]
+            [12]  [98, 98]  [59, 74]
 
 In-Order Traversal:
-[4, 54, 63, 63, 54, 57]
+[12, 72, 98, 98]
 ```
-![Sample Output](sample_output_02.png)
+
 
 ### 📊 Test
 To run the unit tests for the repository, run the commands below
