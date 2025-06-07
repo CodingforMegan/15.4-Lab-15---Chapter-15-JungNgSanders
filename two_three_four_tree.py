@@ -4,8 +4,8 @@
 
 # Course: Spr25_CS_034 CRN 39575
 #--------------------------------------------------------------------------------------------
-
-from typing import Optional, List
+from __future__ import annotations
+from typing import Optional
 from collections import deque
 import random
 
@@ -16,8 +16,10 @@ class Node234:
 
     Attributes
     ----------
-    keys : List of ints
-    children : List of Node234 instances that contain up to 4 keys
+    keys : list[int]
+        List of integer key values
+    children : list[Node234]
+        List of Node234 instances that contain up to 4 keys
 
     Methods
     -------
@@ -25,38 +27,38 @@ class Node234:
         Returns a bool checking if a node has no children.
     is_full()
         Returns a bool checking if the node has the full amount of keys, which is 3 for a 2-3-4 Tree.
-    insert(key, leftChild=None, rightChild=None)
+    insert(key, left_child = None, right_child = None)
         Inserts a node in a 2-3-4 Tree based on the rules for a 2-3-4 Tree.       
         
     """
 
-    def __init__(self, keys=None, children=None):
+    def __init__(self, keys: Optional[list[int]] = None, children: Optional[list[Node234]] = None):
         self.keys = keys if keys else []
         self.children = children if children else []
 
     
-    def is_leaf(self):
+    def is_leaf(self) -> bool:
         """
         Returns a bool checking if a node has no children.
 
         Returns
         -------
-        Bool
+        bool
         """
         return len(self.children) == 0
 
     
-    def is_full(self):
+    def is_full(self) -> bool:
         """
         Returns a bool checking if the node has the full amount of keys, which is 3 for a 2-3-4 Tree.
 
         Returns
         -------
-        Bool
+        bool
         """
         return len(self.keys) == 3
 
-    def insert(self, key, left_child=None, right_child=None):
+    def insert(self, key: int, left_child: Optional[Node234] = None, right_child: Optional[Node234] = None) -> None:
         """
         Inserts a node in a 2-3-4 Tree based on the rules for a 2-3-4 Tree in sorted order. Inserts pointers to child nodes 
         if it is split.
@@ -66,6 +68,10 @@ class Node234:
         key : int
         left_child : Node234 instance
         right_child : Node234 instance
+
+        Returns
+        -------
+        None
         """
         if key in self.keys:
             print(f"Key {key} already exists. Skipping insertion.")
@@ -84,8 +90,7 @@ class Node234:
             if len(self.children) > 4:
                 self.children = self.children[:4]
 
-# =================================
-# =================================
+
 class Tree234:
     """
     Implements a 2-3-4 Tree.
@@ -161,7 +166,6 @@ class Tree234:
         -------
         Bool
         """
-
         def _search(node, key):
             if not node:
                 return False
