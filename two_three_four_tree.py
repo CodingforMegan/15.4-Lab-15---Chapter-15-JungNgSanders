@@ -7,7 +7,7 @@
 
 from typing import Optional, List
 from collections import deque
-#import random
+import random
 #import matplotlib.pyplot as plt
 #import networkx as nx
 
@@ -598,8 +598,6 @@ if __name__ == "__main__":
     print("In-Order Traversal:")
     print(tree.inOrderTraversal())
 
-    visualize_tree(tree.root)
-
     for v in values:
         print(f"Searching for {v}: {'Found' if tree.contains(v) else 'Not Found'}")
         print()
@@ -614,11 +612,8 @@ if __name__ == "__main__":
         tree.remove(v)
         print(f"Removed {v}")
         print(tree.visualize())
-        visualize_tree(tree.root)
         print()
 
 
     print("In-Order Traversal:")
     print(tree.inOrderTraversal())
-
-    visualize_tree(tree.root)
