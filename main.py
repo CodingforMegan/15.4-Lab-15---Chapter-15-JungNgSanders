@@ -6,8 +6,7 @@
 #----------------------------------------------
 from typing import Optional, List
 from collections import deque
-from 234Tree import Tree234
-from 234Tree import Node234
+from two_three_four_tree import Node234, Tree234
 import random
 import matplotlib.pyplot as plt
 import networkx as nx
@@ -23,7 +22,11 @@ def visualize_tree(root):
     Returns
     -------
     None. Displays the Graph representation of the 2-3-4 Tree
-    """ 
+    """
+    if not root:
+        print("Empty tree cannot be displayed")
+        return None
+
     G = nx.DiGraph()
     pos = {}
     labels = {}
