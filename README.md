@@ -42,6 +42,7 @@ Lab15 2-3-4 Tree
 ├     test_main.py
 ├     __init__.py  
 ├── sample_output.png
+├── requirements.txt
 └── README.md
 ```
 ### 🔨Implemented Methods
