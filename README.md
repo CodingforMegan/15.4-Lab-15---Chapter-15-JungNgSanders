@@ -65,9 +65,9 @@ Lab15 2-3-4 Tree
 ### ✅ Input
 ```
 Random generated values list
-keys = [8, 21, 57, 59, 68, 72, 75, 78, 80, 93]
+keys = [4, 7, 41, 50, 57, 71, 72, 73, 81, 97]
 Random value to test contains() for non-existent key:
-Random_value = 88
+Random_value = 90
 ```
 ```
 Use a test driver to insert 15–20 random integers
@@ -75,110 +75,116 @@ Use a test driver to insert 15–20 random integers
 
 ### 📤 Insertion, Search & Deletion Sample Output
 ```
-Inserted 78
-     [78]
-
-Inserted 21
-   [21, 78]
-
-Inserted 8
-  [8, 21, 78]
+Inserted 4
+      [4]
 
 Inserted 72
-              [21]
-         [8]  [72, 78]
+    [4, 72]
+
+Inserted 71
+  [4, 71, 72]
+
+Inserted 41
+              [71]
+         [4, 41]  [72]
+
+Inserted 81
+              [71]
+       [4, 41]  [72, 81]
+
+Inserted 7
+              [71]
+      [4, 7, 41]  [72, 81]
+
+Inserted 97
+              [71]
+    [4, 7, 41]  [72, 81, 97]
+
+Inserted 73
+                    [71, 81]
+           [4, 7, 41]  [72, 73]  [97]
 
 Inserted 57
-              [21]
-       [8]  [57, 72, 78]
+                           [7, 71, 81]
+                  [4]  [41, 57]  [72, 73]  [97]
 
-Inserted 80
-                    [21, 72]
-               [8]  [57]  [78, 80]
-
-Inserted 68
-                    [21, 72]
-             [8]  [57, 68]  [78, 80]
-
-Inserted 59
-                    [21, 72]
-           [8]  [57, 59, 68]  [78, 80]
-
-Inserted 93
-                    [21, 72]
-         [8]  [57, 59, 68]  [78, 80, 93]
-
-Inserted 75
-                           [21, 72, 80]
-                [8]  [57, 59, 68]  [75, 78]  [93]
+Inserted 50
+                               [71]
+                            [7]  [81]
+                [4]  [41, 50, 57]  [72, 73]  [97]
 
 In-Order Traversal:
-[8, 21, 57, 59, 68, 72, 75, 78, 80, 93]
+[4, 7, 41, 50, 57, 71, 72, 73, 81, 97]
 
-Searching for 78: Found
-
-Searching for 21: Found
-
-Searching for 8: Found
+Searching for 4: Found
 
 Searching for 72: Found
 
+Searching for 71: Found
+
+Searching for 41: Found
+
+Searching for 81: Found
+
+Searching for 7: Found
+
+Searching for 97: Found
+
+Searching for 73: Found
+
 Searching for 57: Found
 
-Searching for 80: Found
+Searching for 50: Found
 
-Searching for 68: Found
+Searching for a random value 90: Not Found
 
-Searching for 59: Found
-
-Searching for 93: Found
-
-Searching for 75: Found
-
-Searching for a random value 88: Not Found
-
-Removed 78
-                           [21, 72, 80]
-                  [8]  [57, 59, 68]  [75]  [93]
-
-Removed 21
-                           [57, 72, 80]
-                    [8]  [59, 68]  [75]  [93]
-
-Removed 8
-                           [59, 72, 80]
-                    [8, 57]  [68]  [75]  [93]
-
+Removed 4
+                               [71]
+                            [41]  [81]
+                  [7]  [50, 57]  [72, 73]  [97]
 Removed 72
-                    [59, 80]
-             [8, 57]  [68, 75]  [93]
+                               [71]
+                            [41]  [81]
+                    [7]  [50, 57]  [73]  [97]
+Removed 71
+                    [41, 73]
+             [7]  [50, 57]  [81, 97]
+
+
+Removed 41
+                    [50, 73]
+               [7]  [57]  [81, 97]
+
+
+Removed 81
+                    [50, 73]
+                 [7]  [57]  [97]
+
+
+Removed 7
+              [73]
+         [50, 57]  [97]
+
+
+Removed 97
+              [57]
+           [50]  [73]
+
+
+Removed 73
+   [50, 57]
+
 
 Removed 57
-                    [59, 80]
-               [8]  [68, 75]  [93]
+     [50]
 
-Removed 80
-                    [59, 75]
-               [8]  [68]  [93, 93]
 
-Removed 68
-                    [59, 93]
-               [8]  [68, 75]  [93]
-
-Removed 59
-                    [68, 93]
-                 [8]  [75]  [93]
-
-Removed 93
-              [68]
-         [8]  [75, 93]
-
-Removed 75
-              [68]
-           [8]  [93]
+Removed 50
+<empty tree>
+<empty tree>
 
 In-Order Traversal:
-[8, 68, 93]
+[]
 ```
 ![Sample Output](sample_output_01.png)
 
