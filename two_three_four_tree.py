@@ -66,8 +66,8 @@ class Node234:
         Parameters
         ----------
         key : int
-        leftChild : Any  
-        rightChild : Any
+        leftChild : Node234 instance  
+        rightChild : Node234 instance  
         
         """
 
@@ -115,7 +115,7 @@ class Tree234:
         Removes a key from the 234 Tree and uses successor replacement and preemptive merging to preserve the properties of the 2-3-4 Tree
         if needed
     _find_successor(node)
-        Finds the successor node which is used for removing an internal nodef in the remove() method
+        Finds the successor node which is used for removing an internal node in the remove() method
     _handle_underflow(node, key)
         Handles the case when merging is necessary to preserve the properties of a 2-3-4 Tree
     _find_parent()
@@ -448,7 +448,7 @@ class Tree234:
 
     def _merge_with_siblings(self, parent, idx):
         """
-        Handles an underflow by merging a node with its sibling and pulling down a key from the parent node. If a node and its siblind nodes
+        Handles an underflow by merging a node with its sibling and pulling down a key from the parent node. If a node and its sibling nodes
         does not have enough keys, a merge is performed with either the right or left sibling and a key from the parent is placed in the middle.
         Since a merge might lead to underflow, this process is done recursively
 
