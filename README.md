@@ -13,7 +13,7 @@
 - Create a 2-3-4 Tree node structure
   
        - Each node support up to 3 keys
-       - Each internal node has 2, 3 o 4 children
+       - Each internal node has 2, 3 or 4 children
 - Implement a 2-3-4 Tree structure with dynamic node splitting and merging
   
        - Dynamic node splitting
@@ -34,13 +34,13 @@ Total	                                   30 pts
 ```
 Lab15 2-3-4 Tree
 ├── main.py:
-├           visualize_tree()
+├     visualize_tree()
 ├── 234Tree.py: 
-├           Node234 class, Tree234 class
+├     Node234 class, Tree234 class
 ├── tests/
-├           test_BTree.py
-├           test_main.py
-├           __init__.py  
+├     test_BTree.py
+├     test_main.py
+├     __init__.py  
 ├── sample_output.png
 └── README.md
 ```
@@ -187,11 +187,48 @@ In-Order Traversal:
 ```
 ![Sample Output](sample_output.png)
 
-### 📊 Test
-To run the unit tests for the repository, run the commands below
+### 🧪 Test
+To run the unit tests for the repository, run the commands below. Use the `--cov` flag to display a coverage report in the output.
 ```
-python -m pip install pytest
-python -m pytest
+python -m pip install pytest, pytest-cov
+python -m pytest . --cov=. -v
+```
+#### 🔬 Test Outputs
+```text
+================================ test session starts =================================
+platform darwin -- Python 3.13.2, pytest-8.4.0, pluggy-1.6.0 -- /Users/tim/School/15.4-Lab-15---Chapter-15-JungNgSanders/.venv/bin/python
+cachedir: .pytest_cache
+rootdir: /Users/tim/School/15.4-Lab-15---Chapter-15-JungNgSanders
+plugins: cov-6.1.1
+collected 13 items                                                                   
+
+test/test_main.py::test_visualize_tree_empty PASSED                            [  7%]
+test/test_main.py::test_visualize_tree_single_node PASSED                      [ 15%]
+test/test_two_three_four_tree.py::test_initialization_defaults PASSED          [ 23%]
+test/test_two_three_four_tree.py::test_node_is_leaf PASSED                     [ 30%]
+test/test_two_three_four_tree.py::test_node_is_full PASSED                     [ 38%]
+test/test_two_three_four_tree.py::test_node_insert_sorted_order PASSED         [ 46%]
+test/test_two_three_four_tree.py::test_node_insert_duplicate PASSED            [ 53%]
+test/test_two_three_four_tree.py::test_tree_insert PASSED                      [ 61%]
+test/test_two_three_four_tree.py::test_tree_removal PASSED                     [ 69%]
+test/test_two_three_four_tree.py::test_tree_balance_invariants PASSED          [ 76%]
+test/test_two_three_four_tree.py::test_node_split_error PASSED                 [ 84%]
+test/test_two_three_four_tree.py::test_inorder_traversal_empty_tree PASSED     [ 92%]
+test/test_two_three_four_tree.py::test_visualize_output PASSED                 [100%]
+
+=================================== tests coverage ===================================
+__________________ coverage: platform darwin, python 3.13.2-final-0 __________________
+
+Name                               Stmts   Miss  Cover
+------------------------------------------------------
+main.py                               60     31    48%
+test/__init__.py                       0      0   100%
+test/test_main.py                     24      0   100%
+test/test_two_three_four_tree.py      84      0   100%
+two_three_four_tree.py               248    109    56%
+------------------------------------------------------
+TOTAL                                416    140    66%
+================================= 13 passed in 0.40s =================================
 ```
 
 💡 Implementation Tips
