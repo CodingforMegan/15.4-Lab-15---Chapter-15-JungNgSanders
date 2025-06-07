@@ -120,6 +120,10 @@ class Tree234:
         Handles the case when merging is necessary to preserve the properties of a 2-3-4 Tree
     _find_parent()
         Finds the parent of a node
+    _move_key(source, target, key)
+        Moves a key from a source node to a target node if it exists and the target node doesn't already contain it.
+    _borrow_from_sibling(parent, idx, borrow_from_left)
+        Borrows a key from from either the left or right sibling node and adjusts the parent's keys to balance an underflowing child node
     _borrow_from_left_sibling(node, child)
         Borrows a key from the left sibling to prep for a left rotation
     _borrow_from_right_sibling(parent, idx)
@@ -336,7 +340,7 @@ class Tree234:
     def _handle_underflow(self, node, key):
         """
         Rebalances the tree when a node has fewer keys as a result of a key deletion. Uses key borrowing from a sibling or merging 
-        with a sibling to update the tree to be balanced according to the properties of a 2-3-4 Tree.
+        with a sibling to update the tree to be balanced according to the properties of a 2-3-4 Tree
       
         Parameters
         ----------
@@ -391,8 +395,13 @@ class Tree234:
  
     def _move_key(self, source, target, key):
         """
-        ?????????????????
-        ?????????????????
+        Moves a key from a source node to a target node if it exists and the target node doesn't already contain it.
+
+        Parameters
+        ----------
+        source : Node234 instance, which is the source node
+        target : Node234 instance, which is the target node
+        key : int
         """        
         if key in target.keys:
             return
@@ -403,8 +412,16 @@ class Tree234:
 
     def _borrow_from_sibling(self, parent, idx, borrow_from_left):
         """
-        ?????????????????
-        ?????????????????
+        Borrows a key from from either the left or right sibling node and adjusts the parent's keys to balance an underflowing child node
+      
+        Parameters
+        ----------
+        parent : Node234 instance, which is the parent node
+        idx : int, index of underflowing child in within the parent node's list of children
+        borrow_from_left : bool (If True, a key is borrowed from the left sibling. If False, a key is borrowed from the right sibling)
+        Returns
+        -------
+        A tuple containing the parent node (None if not found) and and the index of the child that is in the parent's keys. 
         """  
         node = parent.children[idx]
         if borrow_from_left:
