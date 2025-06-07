@@ -43,7 +43,6 @@ class Node234:
         -------
         Bool
         """
-
         return len(self.children) == 0
 
     
@@ -55,10 +54,9 @@ class Node234:
         -------
         Bool
         """
-
         return len(self.keys) == 3
 
-    def insert(self, key, leftChild=None, rightChild=None):
+    def insert(self, key, left_child=None, right_child=None):
         """
         Inserts a node in a 2-3-4 Tree based on the rules for a 2-3-4 Tree in sorted order. Inserts pointers to child nodes 
         if it is split.
@@ -66,11 +64,9 @@ class Node234:
         Parameters
         ----------
         key : int
-        leftChild : Node234 instance  
-        rightChild : Node234 instance  
-        
+        left_child : Node234 instance
+        right_child : Node234 instance
         """
-
         if key in self.keys:
             print(f"Key {key} already exists. Skipping insertion.")
             return
@@ -81,10 +77,10 @@ class Node234:
         self.keys.append(key)
         self.keys.sort()
 
-        if leftChild is not None and rightChild is not None:
+        if left_child is not None and right_child is not None:
             idx = self.keys.index(key)
-            self.children.insert(idx, leftChild)
-            self.children.insert(idx + 1, rightChild)
+            self.children.insert(idx, left_child)
+            self.children.insert(idx + 1, right_child)
             if len(self.children) > 4:
                 self.children = self.children[:4]
 
@@ -124,10 +120,6 @@ class Tree234:
         Moves a key from a source node to a target node if it exists and the target node doesn't already contain it.
     _borrow_from_sibling(parent, idx, borrow_from_left)
         Borrows a key from from either the left or right sibling node and adjusts the parent's keys to balance an underflowing child node
-    _borrow_from_left_sibling(node, child)
-        Borrows a key from the left sibling to prep for a left rotation
-    _borrow_from_right_sibling(parent, idx)
-        Borrows a key from the right sibling to prep for a right rotation
     _merge_with_siblings(parent, idx)
         Performs a left or right rotation based on the properties of the 2-3-4 Tree and merges
     visualize()
