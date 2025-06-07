@@ -41,8 +41,7 @@ Lab15 2-3-4 Tree
 ├           test_BTree.py
 ├           test_main.py
 ├           __init__.py  
-├── sample_output_01.png
-├── sample_output_02.png
+├── sample_output.png
 └── README.md
 ```
 ### 🔨Implemented Methods
