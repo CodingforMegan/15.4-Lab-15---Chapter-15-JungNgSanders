@@ -35,10 +35,10 @@ Total	                                   30 pts
 Lab15 2-3-4 Tree
 ├── main.py:
 ├     visualize_tree()
-├── 234Tree.py: 
+├── two_three_four_tree.py: 
 ├     Node234 class, Tree234 class
 ├── tests/
-├     test_BTree.py
+├     test_two_three_four_tree.py
 ├     test_main.py
 ├     __init__.py  
 ├── sample_output.png
