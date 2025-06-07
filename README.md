@@ -186,9 +186,7 @@ Removed 50
 In-Order Traversal:
 []
 ```
-![Sample Output](sample_output_01.png)
-
-![Sample Output](sample_output_02.png)
+![Sample Output](sample_output.png)
 
 ### 📊 Test
 To run the unit tests for the repository, run the commands below
