@@ -8,8 +8,6 @@
 from typing import Optional, List
 from collections import deque
 import random
-#import matplotlib.pyplot as plt
-#import networkx as nx
 
 
 class Node234:
