@@ -83,3 +83,34 @@ def test_tree_removal():
     empty_tree = Tree234()
     with pytest.raises(ValueError):
         empty_tree.remove(99)
+
+def test_tree_balance_invariants(simple_tree):
+    """Test that after insertions, all leaves are at the same level (balanced property) using a get_leaf_depths() helper function."""
+    def get_leaf_depths(node, depth=0, leaf_depths=None):
+        if leaf_depths is None:
+            leaf_depths = set()
+        if node.is_leaf():
+            leaf_depths.add(depth)
+        else:
+            for child in node.children:
+                get_leaf_depths(child, depth+1, leaf_depths)
+        return leaf_depths
+    leaf_depths = get_leaf_depths(simple_tree.root)
+    assert len(leaf_depths) == 1
+
+def test_node_split_error():
+    """Test that a ValueError is raised when trying to insert into a full node."""
+    node = Node234(keys=[5,10,15])
+    with pytest.raises(ValueError):
+        node.insert(12)
+
+def test_inorder_traversal_empty_tree():
+    """Test that inOrderTraversal() returns an empty list when called with an empty tree."""
+    tree = Tree234()
+    assert tree.inOrderTraversal() == []
+
+def test_visualize_output(simple_tree):
+    """Tests that the tree.visualize() method returns a string (with some brackets)."""
+    result = simple_tree.visualize()
+    assert isinstance(result, str)
+    assert "[" in result
