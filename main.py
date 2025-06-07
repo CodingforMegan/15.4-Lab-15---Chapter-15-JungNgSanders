@@ -88,7 +88,7 @@ def main():
 
 
     print("In-Order Traversal:")
-    print(tree.inOrderTraversal())
+    print(tree.in_order_traversal())
     
     visualize_tree(tree.root)
 
@@ -109,7 +109,7 @@ def main():
 
 
     print("In-Order Traversal:")
-    print(tree.inOrderTraversal())
+    print(tree.in_order_traversal())
 
     visualize_tree(tree.root)
 

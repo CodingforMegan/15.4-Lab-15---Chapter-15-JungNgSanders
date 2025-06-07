@@ -64,7 +64,7 @@ def test_tree_insert():
     vals = [10, 20, 5, 6, 12, 30, 25]
     for v in vals:
         tree.insert(v)
-    assert tree.inOrderTraversal() == sorted(vals)
+    assert tree.in_order_traversal() == sorted(vals)
     for v in vals:
         assert tree.contains(v)
 
@@ -107,7 +107,7 @@ def test_node_split_error():
 def test_inorder_traversal_empty_tree():
     """Test that inOrderTraversal() returns an empty list when called with an empty tree."""
     tree = Tree234()
-    assert tree.inOrderTraversal() == []
+    assert tree.in_order_traversal() == []
 
 def test_visualize_output(simple_tree):
     """Tests that the tree.visualize() method returns a string (with some brackets)."""

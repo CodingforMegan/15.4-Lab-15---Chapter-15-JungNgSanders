@@ -96,7 +96,7 @@ class Tree234:
     
     Methods
     -------
-    inOrderTraversal()
+    in_order_traversal()
         Recursively traverses the 2-3-4 Tree in-order.
     contain(key)
         Returns a bool checking if a key is contained in the 2-3-4 Tree
@@ -129,7 +129,7 @@ class Tree234:
     def __init__(self):
         self.root = None
     
-    def inOrderTraversal(self):
+    def in_order_traversal(self):
         """
         Recursively traverses the 2-3-4 Tree in-order.
     
@@ -137,17 +137,16 @@ class Tree234:
         -------
         result : list of ints
         """
-
         result = []
-        def _inOrderTraversal(node):
+        def _in_order_traversal(node):
             if node:
                 for i, key in enumerate(node.keys):
                     if i < len(node.children):
-                        _inOrderTraversal(node.children[i])
+                        _in_order_traversal(node.children[i])
                     result.append(key)
                 if len(node.children) > len(node.keys):
-                    _inOrderTraversal(node.children[-1])
-        _inOrderTraversal(self.root)
+                    _in_order_traversal(node.children[-1])
+        _in_order_traversal(self.root)
         return result
 
     def contains(self, key):
