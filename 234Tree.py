@@ -316,9 +316,6 @@ class Tree234:
 
         _remove(self.root, key)
 
-'''
-
-'''
 
     def _find_successor(self, node):
         """
@@ -358,14 +355,14 @@ class Tree234:
 
         # Ensure we only attempt to borrow from left sibling if it exists and has enough keys
         if idx > 0 and len(parent.children[idx - 1].keys) > 1:
-            self._borrow_from_left_sibling(parent, idx)
+            self._borrow_from_sibling(parent, idx, borrow_from_left=True)
         # Ensure we only attempt to borrow from right sibling if it exists and has enough keys
         elif idx < len(parent.children) - 1 and len(parent.children[idx + 1].keys) > 1:
-            self._borrow_from_right_sibling(parent, idx)
+            self._borrow_from_sibling(parent, idx, borrow_from_left=False)
         else:
             self._merge_with_siblings(parent, idx)
 
-
+    
     def _find_parent(self, node, child):
         """
         Recursively finds a node's parent
@@ -387,55 +384,53 @@ class Tree234:
             if c == child:
                 return node, i
 
-        for i, c in enumerate(node.children):
+        for c in node.children:
             parent, idx = self._find_parent(c, child)
-            if parent is not None:
+            if parent:
                 return parent, idx
         return None, -1
 
-
-    def _borrow_from_left_sibling(self, parent, idx):
+ 
+    def _move_key(self, source, target, key):
         """
-        Borrows a key from the left sibling to handle an underflow
+        ?????????????????
+        ?????????????????
+        """        
+        if key in target.keys:
+            return
+        if key in source.keys:
+            source.keys.remove(key)
+        target.keys.append(key)
+        target.keys.sort()
 
-        Parameters
-        ----------
-        parent : Node234 instance
-        idx : int
+    def _borrow_from_sibling(self, parent, idx, borrow_from_left):
         """
-        left_sibling = parent.children[idx - 1]
+        ?????????????????
+        ?????????????????
+        """  
         node = parent.children[idx]
+        if borrow_from_left:
+            left = parent.children[idx - 1]
+            key_from_parent = parent.keys[idx - 1]
 
-        # The key to borrow from the parent is at index idx - 1
-        node.keys.insert(0, parent.keys.pop(idx - 1))
-        parent.keys.insert(idx - 1, left_sibling.keys.pop())
+            borrowed_key = left.keys.pop()
+            parent.keys[idx - 1] = borrowed_key
+            self._move_key(left, node, key_from_parent)
 
+            if left.children:
+                node.children.insert(0, left.children.pop())
+        else:
+            right = parent.children[idx + 1]
+            key_from_parent = parent.keys[idx]
 
-        if left_sibling.children:
-            node.children.insert(0, left_sibling.children.pop())
+            borrowed_key = right.keys.pop(0)
+            parent.keys[idx] = borrowed_key
+            self._move_key(right, node, key_from_parent)
 
-    def _borrow_from_right_sibling(self, parent, idx):
-        """
-        Borrows a key from the right sibling to handle an underflow
-
-        Parameters
-        ----------
-        parent : Node234 instance
-        idx : int
-        """
-
-        right_sibling = parent.children[idx + 1]
-        node = parent.children[idx]
-
-        # The key to borrow from the parent is at index idx
-        node.keys.append(parent.keys.pop(idx))
-        parent.keys.insert(idx, right_sibling.keys.pop(0))
+            if right.children:
+                node.children.append(right.children.pop(0))
 
 
-        if right_sibling.children:
-            node.children.append(right_sibling.children.pop(0))
-
-    
     def _merge_with_siblings(self, parent, idx):
         """
         Handles an underflow by merging a node with its sibling and pulling down a key from the parent node. If a node and its siblind nodes
@@ -447,15 +442,15 @@ class Tree234:
         parent : Node234 instance
         idx : int
         """
-
+        
         node = parent.children[idx]
 
         if idx > 0:
             # Safe to merge with left sibling
             left_sibling = parent.children[idx - 1]
             if idx - 1 >= len(parent.keys):
-                raise IndexError("Parent keys and children misaligned during left merge") 
-            
+                raise IndexError("Parent keys and children misaligned during left merge")
+
             merge_key = parent.keys.pop(idx - 1)
             parent.children.pop(idx)
 
@@ -476,7 +471,7 @@ class Tree234:
         elif idx < len(parent.children) - 1:
             # Safe to merge with right sibling
             right_sibling = parent.children[idx + 1]
-            if idx + 1 >= len(parent.keys):
+            if idx >= len(parent.keys):
                 raise IndexError("Parent keys and children misaligned during right merge")
 
             merge_key = parent.keys.pop(idx)
@@ -497,7 +492,6 @@ class Tree234:
                 return
         else:
             raise IndexError("Cannot merge: both siblings missing or inconsistent")
-
 
         # Recursive underflow fix
         if not parent.keys and parent != self.root:
@@ -620,6 +614,7 @@ if __name__ == "__main__":
         tree.remove(v)
         print(f"Removed {v}")
         print(tree.visualize())
+        visualize_tree(tree.root)
         print()
 
 
