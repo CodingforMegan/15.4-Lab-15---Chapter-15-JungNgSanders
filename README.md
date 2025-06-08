@@ -74,6 +74,12 @@ Use a test driver to insert 15–20 random integers
 ```
 
 ### 📤 Insertion, Search & Deletion Sample Output
+To run the code in the terminal after cloning the repository to your local environment, run the following commands.
+```shell
+python -m pip install -r requirements.txt
+python main.py
+```
+Sample output for the main module is displayed below.
 ```
 Inserted 4
       [4]
@@ -191,7 +197,7 @@ In-Order Traversal:
 ### 🧪 Test
 To run the unit tests for the repository, run the commands below. Use the `--cov` flag to display a coverage report in the output.
 ```
-python -m pip install pytest, pytest-cov
+python -m pip install pytest pytest-cov
 python -m pytest . --cov=. -v
 ```
 #### 🔬 Test Outputs
