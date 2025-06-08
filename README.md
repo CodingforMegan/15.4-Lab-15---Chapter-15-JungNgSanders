@@ -53,7 +53,7 @@ Lab15 2-3-4 Tree
 - contains(int key)
      Check whether a key exists
 
-- inOrderTraversal()
+- in_order_traversal()
      Store and Print all keys in sorted order
 
 - ⭐ remove(int key) (Bonus)
