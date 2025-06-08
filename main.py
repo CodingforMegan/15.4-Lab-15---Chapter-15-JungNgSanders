@@ -4,24 +4,25 @@
 
 #Course: Spr25_CS_034 CRN 39575
 #----------------------------------------------
-from typing import Optional, List
-from collections import deque
+from typing import Optional
 from two_three_four_tree import Node234, Tree234
 import random
 import matplotlib.pyplot as plt
 import networkx as nx
 
-def visualize_tree(root):
+def visualize_tree(root: Node234) -> None:
     """
     Builds an instance of a 2-3-4 Tree starting from the root node and visualizes it using the networkx and matplotlib libraries.
 
     Parameters
     ----------
-    root : root node of the 2-3-4 Tree
+    root : Node234
+        root node of the 2-3-4 Tree
     
     Returns
     -------
-    None. Displays the Graph representation of the 2-3-4 Tree
+    None
+        Displays the Graph representation of the 2-3-4 Tree
     """
     if not root:
         print("Empty tree cannot be displayed")
@@ -31,20 +32,22 @@ def visualize_tree(root):
     pos = {}
     labels = {}
 
-    def add_node(node, parent_id=None, depth=0, pos_x=0, sibling_offset=1.0):
+    def add_node(node: Node234, parent_id: int = None, depth: int = 0, pos_x: float = 0, sibling_offset: float = 1.0) -> None:
         """
-        Adds the nodes of a 2-3-4 Tree to an instance of a DiGraph from the networkx library     
+        Adds the nodes of a 2-3-4 Tree to an instance of a DiGraph from the networkx library.
+
         Parameters
         ----------
-        node : Node234 instnance
+        node : Node234
+        parent_id : int
         depth : int
         pos_x : float
         sibling_offset : float
         
         Returns
         -------
-        None. 
-        """ 
+        None
+        """
         node_id = id(node)
         label = ','.join(map(str, node.keys))
         G.add_node(node_id)
@@ -75,9 +78,10 @@ def main():
     
     Returns
     -------
-    None. Visualizes the 2-3-4 Tree after the insert(), remove(), and contain() methods are called, as well as th visualization of
-    the in-order traversal of the 2-3-4 Tree.
-    """ 
+    None
+        Visualizes the 2-3-4 Tree after the insert(), remove(), and contain() methods are called, as well as
+        the visualization of the in-order traversal of the 2-3-4 Tree.
+    """
     tree = Tree234()
     values = random.sample(range(1, 101), 7)
     for v in values:
@@ -85,7 +89,6 @@ def main():
         print(f"Inserted {v}")
         print(tree.visualize())
         print()
-
 
     print("In-Order Traversal:")
     print(tree.in_order_traversal())
@@ -106,7 +109,6 @@ def main():
         print(f"Removed {v}")
         print(tree.visualize())
         print()
-
 
     print("In-Order Traversal:")
     print(tree.in_order_traversal())
