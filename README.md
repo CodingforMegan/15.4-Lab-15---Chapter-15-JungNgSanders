@@ -192,6 +192,7 @@ Removed 50
 In-Order Traversal:
 []
 ```
+![Sample Output](sample_output.png)
 
 ### 🧪 Test
 To run the unit tests for the repository, run the commands below. Use the `--cov` flag to display a coverage report in the output.
